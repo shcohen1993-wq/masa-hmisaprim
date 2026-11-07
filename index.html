@@ -13,7 +13,7 @@
 /* Layout: one centered column like a kid's workbook; each grade is a "world" with a dotted path of stations; quiz = big card + chunky tap targets */
 :root{
   --bg:#E7EFF6; --paper:#FFFFFF; --soft:#F0F5FA; --ink:#1B2737; --muted:#56677C; --line:#C8D5E2;
-  --a:#EC7A1F; --b:#18955C; --c:#6A4CDB; --accent:var(--a); --on-accent:#FFFFFF;
+  --a:#EC7A1F; --b:#18955C; --c:#6A4CDB; --d:#2563EB; --e:#0E8A7E; --f:#D02B79; --accent:var(--a); --on-accent:#FFFFFF;
   --good:#1C9A52; --good-bg:#E1F5E8; --bad:#D6404A; --bad-bg:#FCE7E8;
   --dot1:#F0962A; --dot2:#2E7BDB; --sun:#FFBE2E; --x:#A3B0BF; --sky1:#BFE0FA; --sky2:#EEF7FE;
   --f-display:"Secular One","Arial Hebrew",Arial,sans-serif;
@@ -21,12 +21,12 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0F1726; --paper:#18233A; --soft:#1F2C46; --ink:#E9EFF7; --muted:#9DAAC0; --line:#2C3B58;
-  --a:#FF9A4D; --b:#3FCB87; --c:#A28CFF; --on-accent:#0F1726;
+  --a:#FF9A4D; --b:#3FCB87; --c:#A28CFF; --d:#6EA0FF; --e:#3CC9B5; --f:#F472B6; --on-accent:#0F1726;
   --good:#45CB7D; --good-bg:#16372A; --bad:#FF6B72; --bad-bg:#3B1D24;
   --dot1:#FFAA4A; --dot2:#5DA3FF; --sun:#FFD25E; --x:#56647C; --sky1:#18284A; --sky2:#24375E; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0F1726; --paper:#18233A; --soft:#1F2C46; --ink:#E9EFF7; --muted:#9DAAC0; --line:#2C3B58;
-  --a:#FF9A4D; --b:#3FCB87; --c:#A28CFF; --on-accent:#0F1726;
+  --a:#FF9A4D; --b:#3FCB87; --c:#A28CFF; --d:#6EA0FF; --e:#3CC9B5; --f:#F472B6; --on-accent:#0F1726;
   --good:#45CB7D; --good-bg:#16372A; --bad:#FF6B72; --bad-bg:#3B1D24;
   --dot1:#FFAA4A; --dot2:#5DA3FF; --sun:#FFD25E; --x:#56647C; --sky1:#18284A; --sky2:#24375E; color-scheme:dark}
 
@@ -549,6 +549,39 @@ button{font-family:inherit;color:inherit;cursor:pointer}
 .sharebox{display:flex;gap:8px;flex-wrap:wrap}
 .sharebox textarea,.field textarea{flex:1;min-width:0;font:500 13px ui-monospace,monospace;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);direction:ltr;resize:vertical;width:100%}
 .sharebox input{flex:1;min-width:0;font:500 15px var(--f-body);padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);direction:ltr}
+
+/* grades ד–ו + test */
+.mix{display:inline-flex;align-items:center;gap:4px;font-weight:600}
+.ffig{margin:0;display:grid;justify-items:center;gap:4px;font-size:20px}
+.testbtn{background:var(--paper);color:var(--ink);border:2px solid var(--line);box-shadow:0 6px 0 var(--line)}
+.testbtn p{color:var(--muted)}
+.linkbtn{border:0;background:none;color:var(--accent);font:600 15px var(--f-body);text-decoration:underline;padding:0 4px;cursor:pointer}
+.xtop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-block:4px 8px;font-weight:600}
+.xclock{font:600 22px var(--f-body);color:var(--accent);font-variant-numeric:tabular-nums}
+.xcount{color:var(--muted);font-size:15px}
+.xnav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.xdot{width:34px;height:34px;border-radius:10px;border:2px solid var(--line);background:var(--paper);font:600 14px var(--f-body);color:var(--muted);padding:0}
+.xdot.ans{background:color-mix(in srgb,var(--accent) 22%,var(--paper));border-color:var(--accent);color:var(--ink)}
+.xdot.cur{outline:3px solid var(--ink);outline-offset:1px}
+.xnum{font-size:14px;font-weight:600;color:var(--accent)}
+.xhint{text-align:center;color:var(--muted);font-size:14px}
+.xscore{width:130px;height:130px;border-radius:50%;display:grid;place-items:center;font:56px var(--f-display);color:#fff;box-shadow:0 7px 0 rgba(0,0,0,.18)}
+.xscore.hi,.tscore.hi{background:var(--good)} .xscore.mid,.tscore.mid{background:#D99100} .xscore.lo,.tscore.lo{background:var(--bad)}
+.xtopic{display:grid;grid-template-columns:minmax(0,9em) 1fr auto;gap:10px;align-items:center;font-size:15px}
+.xbar{height:12px;border-radius:6px;background:var(--soft);overflow:hidden}
+.xbar i{display:block;height:100%;background:var(--accent);border-radius:6px}
+.xrev{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.xrev li{border-radius:14px;padding:10px 12px;background:var(--soft);border-inline-start:5px solid var(--good)}
+.xrev li.no{border-inline-start-color:var(--bad)}
+.xrev summary{cursor:pointer;font-weight:600}
+.xmark{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--good);color:#fff;font-size:14px;margin-inline-end:4px}
+.xrev li.no .xmark{background:var(--bad)}
+.xrevq{font-size:18px!important;text-align:start;margin-block:8px}
+.xrevq .eq,.xrevq .big-eq{font-size:26px!important}
+.thist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.thist li{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:12px;background:var(--soft)}
+.thist small{margin-inline-start:auto;color:var(--muted)}
+.tscore{min-width:46px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;font:20px var(--f-display)}
 #fx{position:fixed;inset:0;pointer-events:none;z-index:20;width:100%;height:100%}
 @media (max-width:480px){
   .prompt .eq,.big-eq{font-size:36px}
@@ -845,7 +878,7 @@ const IC={
 (()=>{const u=k=>`url("data:image/svg+xml,${encodeURIComponent(IC[k])}")`;const st=document.createElement('style');st.textContent=`#app.w-a{--i1:${u('apple')};--i2:${u('flower')}}#app.w-b{--i1:${u('fishO')};--i2:${u('fishB')}}#app.w-c{--i1:${u('star')};--i2:${u('planet')}}`;document.head.appendChild(st)})();
 
 /* world scenes */
-function scene(id){const W='<svg class="scene" viewBox="0 0 600 118" preserveAspectRatio="xMidYMax slice" aria-hidden="true">';
+function scene(id){if(SCENE2[id])return SCENE2[id]();const W='<svg class="scene" viewBox="0 0 600 118" preserveAspectRatio="xMidYMax slice" aria-hidden="true">';
  if(id==='a'){const tree=(x,s=1)=>`<g transform="translate(${x},0) scale(${s})" style="transform-origin:${x}px 110px"><rect x="-5" y="66" width="10" height="44" rx="3" fill="#7A4A26"/><circle cx="0" cy="54" r="27" fill="#2F9E57"/><circle cx="-14" cy="62" r="17" fill="#38B064"/><circle cx="-9" cy="48" r="4.5" fill="#E5463B"/><circle cx="10" cy="58" r="4.5" fill="#E5463B"/><circle cx="2" cy="40" r="4.5" fill="#E5463B"/></g>`;
   return W+`<circle cx="530" cy="30" r="19" fill="#FFE27A"/><path d="M0 118V82Q100 54 200 80T400 74T600 70V118Z" fill="#fff" fill-opacity=".2"/>${tree(70)}${tree(170,.8)}${tree(420,.9)}${tree(510,.75)}<g><rect x="286" y="62" width="7" height="48" fill="#7A4A26"/><rect x="250" y="52" width="80" height="26" rx="6" fill="#FFF3D6" stroke="#7A4A26" stroke-width="3"/><text x="290" y="71" text-anchor="middle" font-family="Fredoka,Arial" font-weight="700" font-size="17" fill="#7A4A26" direction="ltr">1 2 3</text></g><path d="M0 118V100Q150 86 300 100T600 96V118Z" fill="#000" fill-opacity=".13"/><g transform="translate(350,96)">${FROG}</g></svg>`}
  if(id==='b')return W+`<circle cx="70" cy="28" r="18" fill="#FFE27A"/><g fill="#fff" fill-opacity=".7"><ellipse cx="230" cy="26" rx="34" ry="10"/><ellipse cx="252" cy="20" rx="20" ry="10"/></g><g transform="translate(470,0)"><polygon points="-14,104 14,104 8,34 -8,34" fill="#fff"/><polygon points="-12,84 12,84 11,72 -11,72" fill="#D6404A"/><polygon points="-10,58 10,58 9,48 -9,48" fill="#D6404A"/><rect x="-11" y="22" width="22" height="13" rx="3" fill="#FFE27A"/><polygon points="-13,22 13,22 0,10" fill="#D6404A"/></g><path d="M0 118V84Q30 76 60 84T120 84T180 84T240 84T300 84T360 84T420 84T480 84T540 84T600 84V118Z" fill="#2E7BDB"/><path d="M0 98Q30 90 60 98T120 98T180 98T240 98T300 98T360 98T420 98T480 98T540 98T600 98" stroke="#fff" stroke-opacity=".5" stroke-width="3" fill="none"/><g transform="translate(200,0)"><path d="M-46 80H46L34 98H-34Z" fill="#9A5530"/><rect x="-2" y="18" width="4" height="62" fill="#5C341D"/><polygon points="4,22 4,74 44,74" fill="#fff"/><polygon points="-4,30 -4,74 -36,74" fill="#FFE27A"/><text x="20" y="66" text-anchor="middle" font-family="Fredoka,Arial" font-weight="700" font-size="16" fill="#2E7BDB">10</text></g><g transform="translate(340,74) rotate(-25)"><path d="M-12 0c3-5 9-6.5 14-2.2L7-6v12l-5-3.8C-3 6.5-9 5-12 0z" fill="#F28C28"/></g></svg>`;
@@ -896,7 +929,7 @@ const heart=on=>`<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.3C.8 8 
 function gq(gr){const t=R(0,3);
  if(gr==='a'){if(t===0){const s=R(3,10),a=R(1,s-1);return{t:`${a} + ${s-a} = ?`,a:s}}if(t===1){const a=R(3,10),b=R(1,a-1);return{t:`${a} − ${b} = ?`,a:a-b}}if(t===2){const x=R(1,9);return{t:`${x} + ? = 10`,a:10-x}}const x=R(1,9);return{t:`10 + ${x} = ?`,a:10+x}}
  if(gr==='b'){if(t===0){const a=R(20,80),d=pick([10,-10,20,-20]);return{t:`${a} ${d>0?'+':'−'} ${Math.abs(d)} = ?`,a:a+d}}if(t===1){const x=R(3,12);return{t:`${x} + ${x} = ?`,a:2*x}}if(t===2){const a=pick([2,5,10]),b=R(2,10);return{t:`${a} × ${b} = ?`,a:a*b}}const a=10*R(1,8),b=10*R(1,10-a/10);return{t:`${a} + ${b} = ?`,a:a+b}}
- if(t<=1){const a=R(2,10),b=R(2,10);return{t:`${a} × ${b} = ?`,a:a*b}}if(t===2){const k=R(2,9),q=R(2,10);return{t:`${k*q} ÷ ${k} = ?`,a:q}}const a=100*R(1,8),b=100*R(1,9-a/100);return Math.random()<.5?{t:`${a} + ${b} = ?`,a:a+b}:{t:`${a+b} − ${b} = ?`,a:a}}
+ if(['d','e','f'].includes(gr))return gqHigh(gr,t);if(t<=1){const a=R(2,10),b=R(2,10);return{t:`${a} × ${b} = ?`,a:a*b}}if(t===2){const k=R(2,9),q=R(2,10);return{t:`${k*q} ÷ ${k} = ?`,a:q}}const a=100*R(1,8),b=100*R(1,9-a/100);return Math.random()<.5?{t:`${a} + ${b} = ?`,a:a+b}:{t:`${a+b} − ${b} = ?`,a:a}}
 const solvedEq=q=>eq(q.t.replace('?',q.a));
 const gtoken=()=>(S.gtok=(S.gtok||0)+1);
 let raf=null,lastT=0;
@@ -911,7 +944,7 @@ function gameIll(id){if(GILL2[id])return GILL2[id]();const W='<svg class="gill" 
 function vGames(){const P=prof();
  return `${P.grades.length>1?`<div class="gtoggle" role="group" aria-label="רמה">${P.grades.map(id=>{const g=GR.find(x=>x.id===id);return `<button class="${S.gg===id?'on':''}" data-act="gg" data-id="${id}">רמת ${g.name}</button>`}).join('')}</div>`:''}
  <div class="modebar"><b>איך משחקים?</b><div class="gtoggle" role="group" aria-label="שעון">${[[0,'בלי שעון'],[60,'דקה'],[120,'2 דקות'],[180,'3 דקות']].map(([v,l])=>`<button class="${(cur().tmode||0)===v?'on':''}" data-act="tmode" data-id="${v}">${l}</button>`).join('')}</div><small>${cur().tmode?`נגד השעון: אוספים כמה שיותר נקודות ב${tmLabel(cur().tmode)}.`:'משחקים בנחת, בלי לחץ של זמן.'}</small></div>
- <div class="gcards">${GAMES.filter(G=>!G.grades||G.grades.includes(S.gg)).sort((x,y)=>(y.grades?1:0)-(x.grades?1:0)).map(G=>{const b=gbest(G.id);const how=G.id==='tsum'&&S.gg==='c'?'מצאו שני מספרים שהכפל שלהם יוצא בדיוק המספר המבוקש.':G.how;return `<div class="gamecard">${gameIll(G.id)}<h3>${G.title}</h3><p>${how}</p><span class="learns">מה לומדים: ${G.learns}</span><span class="best">${b!==undefined?G.best(b):'עוד לא שיחקתם'}</span>${cur().tmode&&tmBest(G.id,cur().tmode)!==undefined?`<span class="tbest">שיא ב${tmLabel(cur().tmode)}: ${tmBest(G.id,cur().tmode)} נקודות</span>`:''}<div><button class="btn" data-act="gstart" data-id="${G.id}">${cur().tmode?'משחקים נגד השעון!':'משחקים!'}</button></div></div>`}).join('')}</div>`}
+ <div class="gcards">${GAMES.filter(G=>!G.grades||G.grades.includes(S.gg)).sort((x,y)=>(y.grades?1:0)-(x.grades?1:0)).map(G=>{const b=gbest(G.id);const how=G.id==='tsum'&&!['a','b'].includes(S.gg)?'מצאו שני מספרים שהכפל שלהם יוצא בדיוק המספר המבוקש.':G.how;return `<div class="gamecard">${gameIll(G.id)}<h3>${G.title}</h3><p>${how}</p><span class="learns">מה לומדים: ${G.learns}</span><span class="best">${b!==undefined?G.best(b):'עוד לא שיחקתם'}</span>${cur().tmode&&tmBest(G.id,cur().tmode)!==undefined?`<span class="tbest">שיא ב${tmLabel(cur().tmode)}: ${tmBest(G.id,cur().tmode)} נקודות</span>`:''}<div><button class="btn" data-act="gstart" data-id="${G.id}">${cur().tmode?'משחקים נגד השעון!':'משחקים!'}</button></div></div>`}).join('')}</div>`}
 
 /* balloons */
 const BCOL=['#E5463B','#2E7BDB','#F0962A','#8A6CF0','#1C9A52','#E0499B'];
@@ -919,7 +952,7 @@ function startBalloons(){S.B={score:0,lives:3,level:1,ok:0,objs:[],msg:'',mcls:'
 function newBRound(){const B=S.B;const st=document.getElementById('stage');if(!st)return;const W=st.clientWidth,H=st.clientHeight;
  B.q=gq(S.gg);B.wait=false;B.missed=false;const n=S.gg==='a'?4:5;let vals=choicesFrom(B.q.a,shuffle([1,-1,2,-2,10,-10,3]).map(o=>B.q.a+o));while(vals.length<n){const v=B.q.a+R(3,7);if(!vals.includes(v))vals.push(v)}vals=shuffle(vals.slice(0,n));if(!vals.includes(B.q.a))vals[0]=B.q.a;
  const lw=W/n;B.bw=Math.max(48,Math.min(78,lw-8));const cols=shuffle(BCOL.slice());
- B.objs=vals.map((v,i)=>({val:v,x:i*lw+(lw-B.bw)/2,y:H+R(10,170),v:({a:32,b:40,c:46})[S.gg]+B.level*7+R(0,12),c:cols[i%cols.length],popped:false,glow:false}));
+ B.objs=vals.map((v,i)=>({val:v,x:i*lw+(lw-B.bw)/2,y:H+R(10,170),v:(({a:32,b:40,c:46})[S.gg]||50)+B.level*7+R(0,12),c:cols[i%cols.length],popped:false,glow:false}));
  document.getElementById('bq').innerHTML=qEq(B.q.t);mountB();if(!raf){lastT=0;raf=requestAnimationFrame(loopB)}}
 function mountB(){const B=S.B,st=document.getElementById('stage');if(!st)return;
  st.innerHTML=B.objs.map((o,i)=>`<button class="balloon${o.popped?' pop':''}${o.glow?' glow':''}" data-act="bpop" data-i="${i}" style="--bc:${o.c};--bw:${B.bw}px;transform:translate(${o.x}px,${o.y}px)" aria-label="${o.val}"><span class="bb">${o.val}</span></button>`).join('')+(B.over?`<div class="gover"><div>${mascot('happy')}<h2>${B.rec?'שיא חדש!':'כל הכבוד!'}</h2><p>פוצצתם ${B.score} בלונים נכונים</p><p style="color:var(--muted)">השיא: ${gbest('balloons')||0}</p><div class="row" style="justify-content:center"><button class="btn ghost" data-act="games">לכל המשחקים</button><button class="btn" data-act="gstart" data-id="balloons">עוד פעם</button></div></div></div>`:'');
@@ -955,7 +988,7 @@ function mflip(i){const M=S.M;if(M.lock||M.open.includes(i)||M.done.has(M.cards[
  setTimeout(()=>{if(S.view!=='memory'||S.M.tok!==tok)return;M.open=[];M.lock=false;render()},1300)}
 
 /* frog */
-const FJ={a:{max:20,j:[1,2,5,-1]},b:{max:100,j:[1,5,10,-1,-10]},c:{max:999,j:[5,10,50,100,-1,-10,-100]}};
+const FJ={a:{max:20,j:[1,2,5,-1]},b:{max:100,j:[1,5,10,-1,-10]},c:{max:999,j:[5,10,50,100,-1,-10,-100]}};FJ.d=FJ.e=FJ.f=FJ.c;
 function bfs(s,t,J,max){const prev=new Map([[s,null]]);const q=[s];let h=0;while(h<q.length){const v=q[h++];if(v===t)break;for(const j of J){const w=v+j;if(w<0||w>max||prev.has(w))continue;prev.set(w,[v,j]);q.push(w)}}const path=[];let v=t;while(prev.get(v)){const[pv,j]=prev.get(v);path.unshift(j);v=pv}return path}
 function frogRound(){const gr=S.gg,c=FJ[gr];let s0,t0;
  if(gr==='a'){s0=R(0,8);t0=Math.random()<.25&&s0>=6?R(0,s0-4):R(s0+4,20)}
@@ -978,7 +1011,7 @@ function fjump(j){const c=S.F.cur;if(c.done)return;c.jumps.push(j);c.pos+=j;if(c
 
 /* build-the-number */
 function tsRound(round){const gr=S.gg;let tiles,target,mode='sum';
- if(gr==='c'){mode='prod';const a=R(2,9),b=R(2,9);target=a*b;tiles=a===b?[a,b]:[a,b];while(tiles.length<6){const v=R(2,12);if(!tiles.includes(v)||tiles.filter(x=>x===v).length<1)tiles.push(v)}}
+ if(gr!=='a'&&gr!=='b'){mode='prod';const a=R(2,9),b=R(2,9);target=a*b;tiles=a===b?[a,b]:[a,b];while(tiles.length<6){const v=R(2,12);if(!tiles.includes(v)||tiles.filter(x=>x===v).length<1)tiles.push(v)}}
  else{const pool=gr==='a'?[1,2,3,4,5,6,7,8,9]:[5,10,15,20,25,30,35,40,45,50];const k=round<3?2:3;let ch;do{ch=shuffle(pool.slice()).slice(0,k);target=ch.reduce((x,y)=>x+y,0)}while(target>(gr==='a'?18:100));
   tiles=ch.slice();for(const v of shuffle(pool.slice())){if(tiles.length>=6)break;if(!tiles.includes(v))tiles.push(v)}}
  tiles=shuffle(tiles);const sols=new Set();for(let m=1;m<64;m++){const idx=[0,1,2,3,4,5].filter(i=>m>>i&1);if(idx.length<2)continue;if(mode==='prod'&&idx.length!==2)continue;const vals=idx.map(i=>tiles[i]);const v=mode==='prod'?vals[0]*vals[1]:vals.reduce((x,y)=>x+y,0);if(v===target)sols.add(vals.slice().sort((x,y)=>x-y).join(','))}
@@ -1088,7 +1121,7 @@ function vParent(){const pin=store.parent.pin;
  return shareCard()+backupCard()+`<section class="pcard"><h2>השחקנים</h2><p>${PL().map(P=>esc(P.name)).join(', ')}</p><div><button class="btn ghost" data-act="setupedit">ניהול שחקנים: הוספה, עריכה והסרה</button></div></section>`+PL().map(P=>{const c=store.profiles[P.id],g=store.parent.goals[P.id];const ws=weekSec(P.id),wk=keyOf(weekStart());const weeks=[3,2,1,0].map(o=>mins(weekSec(P.id,o)));const mx=Math.max(1,...weeks,g.min||0);
   const stars=Object.values(c.stars).reduce((a,b)=>a+b,0),stk=Object.keys(c.ach).length+Object.values(c.stars).filter(v=>v>=2).length;
   return `<section class="pcard" style="--accent:${P.color}"><h2>${P.name}</h2>
-  <div class="pgrid"><div class="stat"><b>${mins(ws)}</b><span>דקות השבוע</span></div><div class="stat"><b>${streak(P.id)}</b><span>ימים ברצף</span></div><div class="stat"><b>${stars}</b><span>כוכבים</span></div><div class="stat"><b>${stk}</b><span>מדבקות</span></div></div>
+  <div class="pgrid"><div class="stat"><b>${mins(ws)}</b><span>דקות השבוע</span></div><div class="stat"><b>${(c.tests||[]).length?c.tests[c.tests.length-1].s:'–'}</b><span>ציון במבחן האחרון</span></div><div class="stat"><b>${streak(P.id)}</b><span>ימים ברצף</span></div><div class="stat"><b>${stars}</b><span>כוכבים</span></div><div class="stat"><b>${stk}</b><span>מדבקות</span></div></div>
   <div><b style="font-size:15px">דקות בארבעת השבועות האחרונים</b><div class="wbars">${weeks.map((w,i)=>`<div><span>${w}</span><i style="height:${w/mx*70}%"></i><span>${i===3?'השבוע':i===2?'שעבר':`לפני ${3-i}`}</span></div>`).join('')}</div></div>
   <div class="pgrid" style="grid-template-columns:1fr 2fr"><div class="field"><label for="gm-${P.id}">יעד שבועי (דקות)</label><input id="gm-${P.id}" type="number" min="0" max="600" step="5" value="${g.min||''}" placeholder="למשל 30"><small>0 או ריק = בלי יעד</small></div>
   <div class="field"><label for="gp-${P.id}">מה ההפתעה?</label><input id="gp-${P.id}" type="text" maxlength="80" value="${esc(g.prize||'')}" placeholder="למשל: גלידה ביום שישי"><small>זה הטקסט ש${esc(P.name)} ${P.g==='m'?'יראה כשיפתח':'תראה כשתפתח'} את המתנה</small></div></div>
@@ -1385,8 +1418,8 @@ function playOpC(p,op){const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
 GAMES.push(
  {id:'shapes',grades:['c'],title:'צייד הצורות',how:'מצאו על הלוח את כל הצורות המבוקשות, בלי לטעות!',learns:'צלעות, קודקודים ושמות של צורות',best:v=>`שיא: ${v} מתוך 15 כוכבים`},
  {id:'clock',grades:['c'],title:'מכוונים שעון',how:'הזיזו את המחוגים לשעה הנכונה. לפעמים צריך קודם לחשב מתי משהו נגמר.',learns:'קריאת שעון וחישובי זמן',best:v=>`שיא: ${v} מתוך 18 כוכבים`},
- {id:'chart',grades:['c'],title:'בונים דיאגרמה',how:'ספרו את מה שבתמונה, בנו את העמודות וענו על שאלה.',learns:'דיאגרמת עמודות וקריאת ציר',best:v=>`שיא: ${v} מתוך 12 כוכבים`},
- {id:'wp',grades:['c'],title:'מפענחים בעיות',how:'קראו בעיה, בנו את התרגיל מהמספרים הנכונים ובחרו תשובה במילים.',learns:'תרגיל ותשובה במילים, כמו בדף העבודה',best:v=>`שיא: ${v} מתוך 15 כוכבים`});
+ {id:'chart',grades:['c','d','e','f'],title:'בונים דיאגרמה',how:'ספרו את מה שבתמונה, בנו את העמודות וענו על שאלה.',learns:'דיאגרמת עמודות וקריאת ציר',best:v=>`שיא: ${v} מתוך 12 כוכבים`},
+ {id:'wp',grades:['c','d','e','f'],title:'מפענחים בעיות',how:'קראו בעיה, בנו את התרגיל מהמספרים הנכונים ובחרו תשובה במילים.',learns:'תרגיל ותשובה במילים, כמו בדף העבודה',best:v=>`שיא: ${v} מתוך 15 כוכבים`});
 const GILL2={
  shapes:()=>`<svg class="gill" viewBox="0 0 240 112" aria-hidden="true"><svg x="22" y="14" width="80" height="80" viewBox="0 0 100 100">${shapeInner('tri',{col:'#F0962A'})}</svg><svg x="88" y="22" width="70" height="70" viewBox="0 0 100 100">${shapeInner('pent',{col:'#2E7BDB'})}</svg><svg x="150" y="16" width="76" height="76" viewBox="0 0 100 100">${shapeInner('hex',{col:'#1C9A52'})}</svg><circle cx="62" cy="62" r="26" style="fill:none;stroke:var(--ink);stroke-width:5"/><line x1="80" y1="81" x2="98" y2="100" style="stroke:var(--ink);stroke-width:8;stroke-linecap:round"/></svg>`,
  clock:()=>`<svg class="gill" viewBox="0 0 240 112" aria-hidden="true"><svg x="70" y="4" width="104" height="104" viewBox="0 0 200 200">${clockInner(8,30)}</svg></svg>`,
@@ -1507,8 +1540,8 @@ GAMES.push(
  {id:'flash',grades:['a'],title:'מבט מהיר',how:'הציור מופיע לרגע קט ונעלם. כמה היו?',learns:'לזהות כמויות בלי לספור אחד-אחד',best:v=>`שיא: ${v} מתוך 8`},
  {id:'train',grades:['a'],title:'רכבת המספרים',how:'העמיסו את הקרונות לפי הסדר: מהקטן לגדול, ולפעמים הפוך.',learns:'סדר המספרים וספירה בקפיצות',best:v=>`שיא: ${v} מתוך 15 כוכבים`},
  {id:'croc',grades:['a'],title:'התנין הרעב',how:'התנין רוצה את הצד שיש בו יותר. האכילו אותו!',learns:'גדול, קטן ושווה',best:v=>`שיא: ${v} מתוך 10`},
- {id:'shop',grades:['b','c'],title:'חנות הממתקים',how:'שלמו בדיוק עם מטבעות, וחשבו כמה עודף מקבלים.',learns:'כסף, חיבור ועודף',best:v=>`שיא: ${v} מתוך 18 כוכבים`},
- {id:'secret',grades:['b','c'],title:'המספר הסודי',how:'נחשו את המספר. אחרי כל ניחוש תדעו אם הוא גדול או קטן יותר.',learns:'סדר מספרים וחשיבה חכמה',best:v=>`שיא: ${v} מתוך 9 כוכבים`});
+ {id:'shop',grades:['b','c','d','e','f'],title:'חנות הממתקים',how:'שלמו בדיוק עם מטבעות, וחשבו כמה עודף מקבלים.',learns:'כסף, חיבור ועודף',best:v=>`שיא: ${v} מתוך 18 כוכבים`},
+ {id:'secret',grades:['b','c','d','e','f'],title:'המספר הסודי',how:'נחשו את המספר. אחרי כל ניחוש תדעו אם הוא גדול או קטן יותר.',learns:'סדר מספרים וחשיבה חכמה',best:v=>`שיא: ${v} מתוך 9 כוכבים`});
 const coinSVG=(v,s=50)=>{if(v>=20){const col=v===20?'#3BAA6A':'#7A5CD6';return `<svg viewBox="0 0 90 50" width="${Math.round(s*1.5)}" height="${Math.round(s*.84)}" aria-label="${v} שקלים"><rect x="2" y="2" width="86" height="46" rx="6" style="fill:${col};stroke:#1B2737;stroke-width:2"/><rect x="8" y="8" width="74" height="34" rx="4" style="fill:none;stroke:#fff;stroke-opacity:.6;stroke-width:2"/><text x="45" y="34" style="fill:#fff;font:700 21px Fredoka,Arial;text-anchor:middle">${v} ₪</text></svg>`}
   const gold=v===10,col=gold?'#E8B730':'#CDD2DA',rim=gold?'#A97A0B':'#7E8794',r={1:19,2:21,5:23,10:25}[v];return `<svg viewBox="0 0 54 54" width="${s}" height="${s}" aria-label="${v} שקלים"><circle cx="27" cy="27" r="${r}" style="fill:${col};stroke:${rim};stroke-width:3"/><circle cx="27" cy="27" r="${r-6}" style="fill:none;stroke:${rim};stroke-opacity:.5;stroke-width:1.5"/><text x="27" y="33" style="fill:#2A2A2A;font:700 ${v>=10?16:19}px Fredoka,Arial;text-anchor:middle">${v}</text></svg>`};
 const PIPS={1:[[50,50]],2:[[28,28],[72,72]],3:[[25,25],[50,50],[75,75]],4:[[28,28],[72,28],[28,72],[72,72]],5:[[28,28],[72,28],[50,50],[28,72],[72,72]],6:[[28,24],[72,24],[28,50],[72,50],[28,76],[72,76]]};
@@ -1595,7 +1628,7 @@ function crpick(s){const G=S.KG,c=G.cur;if(c.picked)return;c.picked=s;const ok=s
 
 /* candy shop – grades ב-ג */
 const ITEMS=[['סוכרייה על מקל',1,9],['שוקולד',4,15],['מחברת',5,18],['עיפרון',2,8],['כדור',12,35],['ספר',20,60],['בובה',25,90],['משחק קלפים',10,40],['גלידה',6,20],['מדבקות',3,12],['טוש זוהר',3,14],['פאזל',15,70]];
-const coinSet=()=>S.gg==='c'?[50,20,10,5,2,1]:[10,5,2,1];
+const coinSet=()=>S.gg==='b'?[10,5,2,1]:[50,20,10,5,2,1];
 function minCoins(p){const out=[];for(const v of coinSet())while(p>=v){out.push(v);p-=v}return out}
 function spRound(r){const kind=r%3===0?'change':'pay';let it,price;do{it=pick(ITEMS);price=R(it[1],it[2])}while((S.gg==='b'&&price>40)||price<6);
   if(kind==='pay')return{kind,it:it[0],price,tray:[],mist:0,msg:'',mcls:'',done:false};
@@ -1620,7 +1653,7 @@ function spch(k){const G=S.PG,c=G.cur;if(c.done)return;const steps0=changeLines(
   render()}
 
 /* secret number – grades ב-ג */
-function scRound(){const max=S.gg==='c'?200:100;return{max,n:R(1,max),lo:1,hi:max,buf:'',guesses:[],done:false,msg:'',mcls:''}}
+function scRound(){const max=({b:100,c:200})[S.gg]||1000;return{max,n:R(1,max),lo:1,hi:max,buf:'',guesses:[],done:false,msg:'',mcls:''}}
 function startSecretG(){S.QG={round:1,stars:[],cur:scRound(),tok:gtoken()};go('secret')}
 function vSecretG(){const G=S.QG,c=G.cur;if(G.end)return endCard('secret',G.stars.reduce((a,b)=>a+b,0),9,gx('בלשית המספרים!','בלש המספרים!'),'הטריק: לנחש באמצע הטווח. ככה כל ניחוש מוריד חצי מהאפשרויות.',G.rec);
   const X=v=>((v-1)/(c.max-1)*100).toFixed(2);
@@ -1633,7 +1666,7 @@ function vSecretG(){const G=S.QG,c=G.cur;if(G.end)return endCard('secret',G.star
 function sckey(k){const c=S.QG.cur;if(c.done)return;if(k==='del')c.buf=c.buf.slice(0,-1);else if(c.buf.length<3)c.buf=(c.buf+k).replace(/^0+/,'');sfx.tick();render()}
 function scgo(){const G=S.QG,c=G.cur;if(c.done)return;const g=+c.buf;c.buf='';if(!g||g>c.max){c.msg=`מקלידים מספר בין 1 ל-${c.max}.`;c.mcls='no';render();return}
   c.guesses.push(g);const mid=Math.floor((c.lo+c.hi)/2);
-  if(g===c.n){c.done=true;const n=c.guesses.length,lim=c.max>100?8:7;c.st=n<=lim?3:n<=lim+3?2:1;G.stars.push(c.st);tpt(c.st);sfx.good();c.mcls='ok';c.msg=`מצאת! ${c.n} – ב-${n} ניחושים.`;if(c.st===3)confetti()}
+  if(g===c.n){c.done=true;const n=c.guesses.length,lim=c.max>200?10:c.max>100?8:7;c.st=n<=lim?3:n<=lim+3?2:1;G.stars.push(c.st);tpt(c.st);sfx.good();c.mcls='ok';c.msg=`מצאת! ${c.n} – ב-${n} ניחושים.`;if(c.st===3)confetti()}
   else{sfx.bad();c.mcls='no';const tip=(g<c.lo||g>c.hi)?' (כבר ידענו שזה לא שם!)':'';if(g<c.n){c.lo=Math.max(c.lo,g+1);c.msg=`${g} קטן מדי ▲ המספר גדול יותר.${tip}`}else{c.hi=Math.min(c.hi,g-1);c.msg=`${g} גדול מדי ▼ המספר קטן יותר.${tip}`}
     if(c.guesses.length===2)c.msg+=` טיפ: נחשו באמצע, בערך ${Math.floor((c.lo+c.hi)/2)}.`}
   render()}
@@ -1697,6 +1730,317 @@ function bkAct(a){S.bk=S.bk||{};const B=S.bk;B.err='';
   if(a==='bkno'){B.data=null;render();return}
   if(a==='bkok'){store=B.data;save();S.bk=null;location.reload()}}
 
+
+/* ================= GRADES ד–ו ================= */
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+const r3=x=>Math.round(x*1000)/1000;
+const fmtK=n=>Number(n).toLocaleString('en-US');
+function nums(ans,cands,min=0){ans=r3(ans);const set=[ans];for(const c0 of cands){const c=r3(c0);if(set.length>=4)break;if(Number.isFinite(c)&&c>=min&&!set.includes(c))set.push(c)}let k=1;const st=Math.abs(ans)<2&&!Number.isInteger(ans)?0.1:1;while(set.length<4){for(const c of [r3(ans+k*st),r3(ans-k*st)])if(set.length<4&&c>=min&&!set.includes(c))set.push(c);k++}return shuffle(set)}
+function toMix(n,d){const g=gcd(n,d);n/=g;d/=g;if(d===1)return String(n);const w=Math.floor(n/d),r=n%d;return w?`${w} ${r}/${d}`:`${r}/${d}`}
+const mixS=s=>{s=String(s);if(s.includes(' ')){const[w,f]=s.split(' ');return `<span class="mix" dir="ltr">${w}${fracS(f)}</span>`}return s.includes('/')?fracS(s):s};
+const mixE=s=>mixS(s);
+function fracBar(n,d,o={}){const W=o.w||280,H=32,bars=Math.max(1,Math.ceil(n/d));let s='';for(let b=0;b<bars;b++)for(let k=0;k<d;k++){const idx=b*d+k;s+=`<rect x="${(k*W/d).toFixed(1)}" y="${b*(H+8)}" width="${(W/d).toFixed(1)}" height="${H}" style="fill:${idx<n?(o.col||'var(--accent)'):'var(--paper)'};stroke:var(--ink);stroke-width:2"/>`}return `<svg viewBox="-2 -2 ${W+4} ${bars*(H+8)}" width="${W}" style="max-width:100%;height:auto" role="img" aria-label="${n} חלקים מתוך ${d}">${s}</svg>`}
+const fracFig=(n,d,w)=>`<figure class="ffig">${fracBar(n,d,{w})}<span>${mixS(toMix(n,d)==='0'?'0':(n>d?toMix(n,d):`${n}/${d}`))}</span></figure>`;
+function hundredGrid(k,s=150){let r='';for(let i=0;i<100;i++){const x=i%10,y=Math.floor(i/10);r+=`<rect x="${x*10}" y="${y*10}" width="10" height="10" style="fill:${i<k?'var(--accent)':'var(--paper)'};stroke:var(--line);stroke-width:.6"/>`}return `<svg viewBox="-1 -1 102 102" width="${s}" height="${s}" style="max-width:100%;height:auto" role="img" aria-label="${k} מתוך 100">${r}<rect x="0" y="0" width="100" height="100" style="fill:none;stroke:var(--ink);stroke-width:1.5"/></svg>`}
+function angleSVG(deg,o={}){const cx=deg>90?150:50,cy=150,L=110,a=deg*Math.PI/180;const x2=cx+L*Math.cos(-a),y2=cy+L*Math.sin(-a);let arc;
+  if(deg===90)arc=`<path d="M${cx+24} ${cy} L${cx+24} ${cy-24} L${cx} ${cy-24}" style="fill:none;stroke:var(--accent);stroke-width:3"/>`;
+  else{const r=34,ax=cx+r*Math.cos(-a),ay=cy+r*Math.sin(-a);arc=`<path d="M${cx+r} ${cy} A${r} ${r} 0 0 0 ${ax.toFixed(1)} ${ay.toFixed(1)}" style="fill:none;stroke:var(--accent);stroke-width:3"/>`}
+  const lx=cx+56*Math.cos(-a/2),ly=cy+56*Math.sin(-a/2)+6;
+  return `<svg viewBox="0 0 280 170" width="240" style="max-width:100%;height:auto" role="img" aria-label="זווית"><line x1="${cx}" y1="${cy}" x2="${cx+120}" y2="${cy}" style="stroke:var(--ink);stroke-width:4;stroke-linecap:round"/><line x1="${cx}" y1="${cy}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" style="stroke:var(--ink);stroke-width:4;stroke-linecap:round"/>${arc}<circle cx="${cx}" cy="${cy}" r="4" style="fill:var(--ink)"/>${o.label?`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" style="fill:var(--accent);font:700 17px Fredoka,Arial;text-anchor:middle" direction="ltr">${o.label}</text>`:''}</svg>`}
+function triAng(la,lb,lc,right){const ts=v=>`style="fill:${v==='?'?'var(--bad)':'var(--ink)'};font:700 18px Fredoka,Arial;text-anchor:middle" direction="ltr"`;const P=right?'40,175 260,175 40,40':'30,175 270,175 120,35';
+  return `<svg viewBox="0 0 300 200" width="270" style="max-width:100%;height:auto" role="img" aria-label="משולש"><polygon points="${P}" style="fill:color-mix(in srgb,var(--accent) 14%,var(--paper));stroke:var(--accent);stroke-width:4;stroke-linejoin:round"/>${right?`<path d="M40 153 L62 153 L62 175" style="fill:none;stroke:var(--ink);stroke-width:2.5"/><text x="78" y="148" ${ts(la)}>${la}</text><text x="214" y="166" ${ts(lb)}>${lb}</text><text x="56" y="80" ${ts(lc)}>${lc}</text>`:`<text x="70" y="165" ${ts(la)}>${la}</text><text x="230" y="165" ${ts(lb)}>${lb}</text><text x="122" y="74" ${ts(lc)}>${lc}</text>`}</svg>`}
+function triArea(b,h){const ts='fill:var(--ink);font:600 16px Fredoka,Arial;text-anchor:middle';return `<svg viewBox="0 0 300 200" width="270" style="max-width:100%;height:auto" role="img" aria-label="משולש"><polygon points="30,165 270,165 190,35" style="fill:color-mix(in srgb,var(--accent) 14%,var(--paper));stroke:var(--accent);stroke-width:4;stroke-linejoin:round"/><line x1="190" y1="35" x2="190" y2="165" style="stroke:var(--ink);stroke-width:2.5;stroke-dasharray:6 5"/><path d="M190 151 L176 151 L176 165" style="fill:none;stroke:var(--ink);stroke-width:2"/><text x="150" y="190" style="${ts}">בסיס ${b} ס״מ</text><text x="200" y="106" style="${ts};text-anchor:start">גובה ${h}</text></svg>`}
+function boxSVG(l,w,h){const u=Math.min(150/(l+w*0.5),110/(h+w*0.5),24),L=l*u,H=h*u,D=w*u*0.5,x=78,y=18+D,ts='fill:var(--ink);font:600 15px Fredoka,Arial';
+  return `<svg viewBox="0 0 ${x+L+D+90} ${y+H+34}" width="${Math.min(x+L+D+90,380)}" style="max-width:100%;height:auto" role="img" aria-label="תיבה"><polygon points="${x},${y} ${x+L},${y} ${x+L+D},${y-D} ${x+D},${y-D}" style="fill:color-mix(in srgb,var(--accent) 30%,var(--paper));stroke:var(--accent);stroke-width:2.5"/><polygon points="${x+L},${y} ${x+L+D},${y-D} ${x+L+D},${y+H-D} ${x+L},${y+H}" style="fill:color-mix(in srgb,var(--accent) 45%,var(--paper));stroke:var(--accent);stroke-width:2.5"/><rect x="${x}" y="${y}" width="${L}" height="${H}" style="fill:color-mix(in srgb,var(--accent) 16%,var(--paper));stroke:var(--accent);stroke-width:2.5"/><text x="${x+L/2}" y="${y+H+24}" style="${ts};text-anchor:middle">${l} ס״מ</text><text x="${x-8}" y="${y+H/2+5}" style="${ts};text-anchor:end">${h} ס״מ</text><text x="${x+L+D/2+8}" y="${y+H-D/2+20}" style="${ts};text-anchor:start">${w} ס״מ</text></svg>`}
+const circleSVG=lab=>`<svg viewBox="0 0 200 200" width="170" style="max-width:100%;height:auto" role="img" aria-label="מעגל"><circle cx="100" cy="100" r="80" style="fill:color-mix(in srgb,var(--accent) 14%,var(--paper));stroke:var(--accent);stroke-width:4"/><line x1="100" y1="100" x2="180" y2="100" style="stroke:var(--ink);stroke-width:3"/><circle cx="100" cy="100" r="4" style="fill:var(--ink)"/><text x="140" y="90" style="fill:var(--ink);font:700 16px Fredoka,Arial;text-anchor:middle">${lab}</text></svg>`;
+function areaModel(a,b){const ap=a>=10?[Math.floor(a/10)*10,a%10].filter(Boolean):[a],bp=b>=10?[Math.floor(b/10)*10,b%10].filter(Boolean):[b];const tw=a,th=b,ts='fill:var(--ink);font:600 15px Fredoka,Arial;text-anchor:middle';let x=40,s='',yEnd=30;
+  ap.forEach(av=>{const w=Math.max(56,240*av/tw);let y=30;s+=`<text x="${x+w/2}" y="22" style="${ts}">${av}</text>`;bp.forEach((bv,bi)=>{const h=bp.length>1?Math.max(42,150*bv/th):80;s+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" style="fill:color-mix(in srgb,var(--accent) ${bi%2?30:14}%,var(--paper));stroke:var(--accent);stroke-width:2.5"/><text x="${x+w/2}" y="${y+h/2+6}" style="${ts};font-weight:700">${av*bv}</text>`;y+=h});yEnd=y;x+=w});
+  let y=30;bp.forEach(bv=>{const h=bp.length>1?Math.max(42,150*bv/th):80;s+=`<text x="22" y="${y+h/2+5}" style="${ts}">${bv}</text>`;y+=h});
+  return `<svg viewBox="0 0 ${x+10} ${yEnd+10}" width="${Math.min(x+10,360)}" style="max-width:100%;height:auto" role="img" aria-label="מודל שטח">${s}</svg>`}
+function longDiv(n,d){const ds=String(n).split('').map(Number);let rem=0,started=false;const L=[];
+  ds.forEach((dig,k)=>{const cur=rem*10+dig,qd=Math.floor(cur/d);rem=cur%d;if(!started&&qd===0&&k<ds.length-1){L.push(`${cur} קטן מ-${d}, אז מצרפים את הספרה הבאה.`);return}started=true;L.push(`${k&&L.length?'מורידים את '+dig+': ':''}${eq(`${cur} ÷ ${d} = ${qd}`)}${rem?` ונשאר ${rem}`:''}${qd===0?' – כותבים 0 במנה!':''}`)});
+  return stepsT(L)}
+
+/* ---------- ד ---------- */
+function genBigNum(i){const d=D(i);const t=['place','cmp','round','build','place','round','cmp','build'][i]||pick(['place','round','cmp']);
+  if(t==='place'){const n=d===0?R(10000,99999):R(100000,999999);const s=String(n);let k;do k=R(0,s.length-1);while(s[k]==='0');const dig=+s[k],pv=10**(s.length-1-k),ans=dig*pv;const names=['אחדות','עשרות','מאות','אלפים','עשרות אלפים','מאות אלפים'];
+    return{prompt:`מה הערך של הספרה <b>${dig}</b> במספר <span dir="ltr">${fmtK(n)}</span>?`,visual:'',answer:ans,choices:choicesFrom(ans,shuffle([dig,dig*10,dig*100,dig*1000,dig*10000,dig*100000].filter(v=>v!==ans)),0),render:fmtK,hint:'כל מקום שמאלה שווה פי 10. ספרו מהאחדות (מימין) שמאלה.',
+      explain:`<p>הספרה ${dig} נמצאת במקום ה<b>${names[s.length-1-k]}</b>, ולכן ערכה ${fmtK(ans)}.</p><div class="pvwrap"><table class="pv"><thead><tr>${[...s].map((_,j)=>`<th>${names[s.length-1-j].replace(' ','<br>')}</th>`).join('')}</tr></thead><tbody><tr>${[...s].map((c,j)=>`<td${j===k?' style="color:var(--accent)"':''}>${c}</td>`).join('')}</tr></tbody></table></div>`,review:`הספרה ${dig} ב-${fmtK(n)} שווה ${fmtK(ans)}`}}
+  if(t==='cmp'){const a=R(d?100000:10000,d?999999:99999);let b;const s=String(a).split('');const p=R(1,s.length-1);const q=R(0,s.length-1);[s[p],s[q]]=[s[q],s[p]];b=+s.join('');if(b===a||b<10000)b=a+pick([1,10,100,1000]);const big=Math.max(a,b);
+    return{prompt:'איזה מספר גדול יותר?',visual:'',answer:fmtK(big),choices:[fmtK(a),fmtK(b)],render:v=>`<span dir="ltr">${v}</span>`,small:true,hint:'משווים ספרה-ספרה משמאל. הספרה הראשונה שונה מחליטה.',
+      explain:`<p>משווים משמאל לימין. במקום הראשון שבו הספרות שונות, המספר עם הספרה הגדולה יותר גדול יותר. לכן <b dir="ltr">${fmtK(big)}</b> גדול יותר.</p>`,review:`${fmtK(big)} גדול יותר`}}
+  if(t==='round'){const n=R(1000,d===2?99999:9999);const pv=d===0?10:d===1?100:1000;const ans=Math.round(n/pv)*pv;const nm={10:'לעשרות',100:'למאות',1000:'לאלפים'}[pv];const look=Math.floor(n/(pv/10))%10;
+    return{prompt:`עגלו את <span dir="ltr">${fmtK(n)}</span> ${nm} הקרובות`,visual:'',answer:ans,choices:choicesFrom(ans,[Math.floor(n/pv)*pv,Math.ceil(n/pv)*pv,ans+pv,ans-pv,n],0),render:fmtK,hint:`מסתכלים על הספרה שמימין למקום ה${nm.slice(1)}: 5 ומעלה – מעגלים למעלה.`,
+      explain:`<p>מעגלים ${nm}: מסתכלים על הספרה שמימין, והיא ${look}. ${look>=5?'5 ומעלה – מעגלים למעלה':'פחות מ-5 – מעגלים למטה'}.</p><p><b dir="ltr">${fmtK(n)} ≈ ${fmtK(ans)}</b></p>`,review:`${fmtK(n)} ≈ ${fmtK(ans)}`}}
+  const th=R(1,d===2?99:9),hu=R(0,9),te=Math.random()<.5?0:R(1,9),on=R(1,9);const ans=th*1000+hu*100+te*10+on;
+  return{prompt:`איזה מספר זה? <b>${th} אלפים, ${hu} מאות${te?`, ${te} עשרות`:''} ו-${on} אחדות</b>`,visual:'',answer:ans,choices:choicesFrom(ans,[Number(`${th}${hu}${te||''}${on}`),ans+1000,ans+10,ans-100].filter(v=>v!==ans),0),render:fmtK,hint:'מקום ריק מקבל 0! כותבים ספרה לכל מקום: אלפים, מאות, עשרות, אחדות.',
+    explain:`<p>${eq(`${th*1000} + ${hu*100} + ${te*10} + ${on} = ${ans}`)}</p>${te?'':'<p class="alt">אין עשרות? כותבים 0 במקום העשרות – אחרת המספר משתנה!</p>'}`,review:`${fmtK(ans)}`}}
+
+function genMulti(i){const d=D(i);let a,b;if(i===2&&Math.random()<.5){a=R(12,99);b=pick([10,100]);const r=a*b;return{prompt:qEq(`${a} × ${b} = ?`),visual:'',answer:r,choices:choicesFrom(r,[a*10,a*100,a*1000,a+b].filter(v=>v!==r),0),render:fmtK,hint:`כפול ${b}: מוסיפים ${b===10?'אפס אחד':'שני אפסים'}.`,explain:`<p>כופלים ב-${b}? מוסיפים ${b===10?'0':'00'} בסוף: ${eq(`${a} × ${b} = ${r}`)}</p>`}}
+  if(d===0){a=R(12,49);b=R(3,9)}else if(d===1){a=R(112,489);b=R(3,9)}else{a=R(12,49);b=R(11,29)}const r=a*b;
+  const parts=b<10?(a>=100?[[Math.floor(a/100)*100,b],[Math.floor(a/10)%10*10,b],[a%10,b]].filter(p=>p[0]):[[Math.floor(a/10)*10,b],[a%10,b]].filter(p=>p[0])):[[a,Math.floor(b/10)*10],[a,b%10]].filter(p=>p[1]);
+  const lines=parts.map(([x,y])=>`${x} × ${y} = ${x*y}`).concat([`${parts.map(([x,y])=>x*y).join(' + ')} = ${r}`]);
+  return{prompt:qEq(`${a} × ${b} = ?`),visual:'',answer:r,choices:choicesFrom(r,[r-parts[parts.length-1][0]*parts[parts.length-1][1],r+10,r-10,r+b,r+100],0),render:fmtK,hint:b<10?`מפרקים את ${a} למאות, עשרות ואחדות, וכופלים כל חלק ב-${b}.`:`מפרקים את ${b} לעשרות ואחדות: ${a} × ${Math.floor(b/10)*10} ועוד ${a} × ${b%10}.`,
+    explain:`${a<100?vis(areaModel(a,b)):''}${steps(lines)}<p class="alt">חשבון בחלקים – ואז מחברים. מי ששוכח חלק מקבל ${fmtK(r-parts[parts.length-1][0]*parts[parts.length-1][1])}.</p>`}}
+
+function genDivRem(i){const d=D(i);
+  if(d===0){const b=R(3,9),q=R(3,12),rr=R(1,b-1),n=b*q+rr;const ans=`${q} שארית ${rr}`;
+    return{prompt:qEq(`${n} ÷ ${b} = ?`),visual:'',answer:ans,choices:choicesStr(ans,shuffle([`${q+1} שארית ${rr}`,`${q} שארית ${rr+b<n?rr+1:0}`,`${q-1} שארית ${rr+b}`,`${q}`])),small:true,hint:`כמה פעמים ${b} נכנס ב-${n}? ומה נשאר?`,
+      explain:`<p>${eq(`${b} × ${q} = ${b*q}`)}, ונשאר ${eq(`${n} − ${b*q} = ${rr}`)}.</p><p>לכן ${n} ÷ ${b} = ${q} <b>שארית ${rr}</b>. השארית תמיד קטנה מ-${b}!</p><p class="alt">בדיקה: ${eq(`${b} × ${q} + ${rr} = ${n}`)}</p>`,review:`${n} ÷ ${b} = ${ans}`}}
+  if(d===1){const b=R(3,8),q=R(4,12),rr=R(1,b-1),n=b*q+rr;const up=Math.random()<.6;
+    const P=up?{t:`${n} ילדים יוצאים לטיול. בכל מכונית יש מקום ל-${b} ילדים. כמה מכוניות צריך כדי שכולם ייסעו?`,a:q+1,ex:`${q} מכוניות מלאות, ועוד ${rr} ילדים שצריכים מכונית נוספת. לכן ${q+1}.`}:{t:`יש ${n} עוגיות. אורזים ${b} עוגיות בכל קופסה. כמה קופסאות מלאות יהיו?`,a:q,ex:`יוצאות ${q} קופסאות מלאות, ו-${rr} עוגיות נשארות בחוץ.`};
+    return{prompt:`<span class="wptxt">${P.t}</span>`,say:P.t,visual:'',answer:P.a,choices:choicesFrom(P.a,[q,q+1,rr,q-1],0),hint:'מחלקים עם שארית – ואז חושבים: מה עושים עם השארית?',explain:`<p>${eq(`${n} ÷ ${b} = ${q}`)} שארית ${rr}.</p><p>${P.ex}</p>`,review:`${P.a}`}}
+  const b=R(3,9),q=R(i===7?101:21,i===7?309:99),n=b*q;
+  return{prompt:qEq(`${n} ÷ ${b} = ?`),visual:'',answer:q,choices:choicesFrom(q,[q+10,q-10,q+1,Number(String(q).replace('0',''))].filter(v=>v!==q),0),hint:'חילוק ארוך: מתחילים מהספרה השמאלית ביותר.',explain:`${longDiv(n,b)}<p>התשובה: <b>${q}</b>. בודקים: ${eq(`${q} × ${b} = ${n}`)}</p>`}}
+
+function genOrder(i){const d=D(i);let s,val,naive,L;
+  if(d===0){const b=R(2,9),c=R(2,9);if(Math.random()<.5){const a=R(2,12);s=`${a} + ${b} × ${c}`;val=a+b*c;naive=(a+b)*c;L=[`${b} × ${c} = ${b*c}`,`${a} + ${b*c} = ${val}`]}else{const a=b*c+R(2,15);s=`${a} − ${b} × ${c}`;val=a-b*c;naive=(a-b)*c;L=[`${b} × ${c} = ${b*c}`,`${a} − ${b*c} = ${val}`]}}
+  else if(d===1){const a=R(2,9),b=R(2,9);if(Math.random()<.5){const c=R(2,6);s=`(${a} + ${b}) × ${c}`;val=(a+b)*c;naive=a+b*c;L=[`${a} + ${b} = ${a+b}`,`${a+b} × ${c} = ${val}`]}else{let e=R(2,6),f=R(2,6);if(a*b<e*f)[e,f]=[1,1];s=`${a} × ${b} − ${e} × ${f}`;val=a*b-e*f;naive=(a*b-e)*f;L=[`${a} × ${b} = ${a*b}`,`${e} × ${f} = ${e*f}`,`${a*b} − ${e*f} = ${val}`]}}
+  else{const c=R(2,6),q=R(2,9),b=c*q;if(Math.random()<.5){const a=R(q+2,30),dd=R(1,9);s=`${a} − ${b} ÷ ${c} + ${dd}`;val=a-q+dd;naive=a-(q+dd);L=[`${b} ÷ ${c} = ${q}`,`${a} − ${q} = ${a-q}`,`${a-q} + ${dd} = ${val}`]}else{const x=R(2,8),y=R(2,8),z=R(2,4),w=R(1,10);s=`(${x} + ${y}) × ${z} − ${w}`;val=(x+y)*z-w;naive=x+y*z-w;L=[`${x} + ${y} = ${x+y}`,`${x+y} × ${z} = ${(x+y)*z}`,`${(x+y)*z} − ${w} = ${val}`]}}
+  return{prompt:qEq(`${s} = ?`),visual:'',answer:val,choices:choicesFrom(val,[naive,val+1,val-1,val+10],0),hint:'קודם סוגריים, אחר כך כפל וחילוק, ובסוף חיבור וחיסור – משמאל לימין.',explain:`${steps(L)}<p class="alt">טעות נפוצה: לחשב לפי הסדר משמאל לימין, ואז יוצא ${naive}.</p>`,review:`${s} = ${val}`}}
+
+function genFracEq(i){const d=D(i);const t=['eq','eq','simp','cmp','simp','cmp','toImp','toMix'][i]||pick(['eq','cmp','toMix']);
+  if(t==='eq'){const dd=pick([2,3,4,5]),n=R(1,dd-1),m=pick([2,3,4]);return{prompt:`השלימו: <span class="eq" dir="ltr">${frac(n,dd)} = ${frac('?',dd*m)}</span>`,say:'השלימו את השבר השקול',visual:'',answer:n*m,choices:choicesFrom(n*m,[n+m,n,dd*m-n,n*m+1],1),hint:`במכנה כפלו ב-${m}. מה עושים למונה?`,explain:`<p>המכנה גדל פי ${m} (${dd} → ${dd*m}), ולכן גם המונה גדל פי ${m}: ${eq(`${n} × ${m} = ${n*m}`)}</p><div class="pies">${fracFig(n,dd,200)}${fracFig(n*m,dd*m,200)}</div><p class="alt">אותו חלק מהשלם – רק חתוך לחלקים קטנים יותר.</p>`}}
+  if(t==='simp'){const a=R(1,4),bb=R(a+1,6),m=R(2,4),n=a*m,dd=bb*m;const ans=toMix(n,dd);return{prompt:`צמצמו: <span class="eq" dir="ltr">${frac(n,dd)} = ?</span>`,say:'צמצמו את השבר',visual:'',answer:ans,choices:choicesStr(ans,shuffle([`${n/gcd(n,dd)+1}/${dd/gcd(n,dd)}`,`${n}/${dd/2|0||1}`,`${n-1}/${dd-1}`,`1/${dd-n}`]).filter(x=>x!==ans&&!x.startsWith('0/'))),render:mixS,hint:'מחפשים מספר שמחלק גם את המונה וגם את המכנה.',explain:`<p>מחלקים את המונה ואת המכנה ב-${gcd(n,dd)}: ${eq(`${n} ÷ ${gcd(n,dd)} = ${n/gcd(n,dd)}`)}, ${eq(`${dd} ÷ ${gcd(n,dd)} = ${dd/gcd(n,dd)}`)}</p><div class="pies">${fracFig(n,dd,200)}${fracFig(n/gcd(n,dd),dd/gcd(n,dd),200)}</div>`}}
+  if(t==='cmp'){let a,b,c,e;do{b=pick([3,4,5,6,8]);e=pick([3,4,5,6,8]);a=R(1,b-1);c=R(1,e-1)}while(b===e);const L=a*e,Rr=c*b,ans=L>Rr?'>':L<Rr?'<':'=';const cd=b*e;
+    return{prompt:`איזה סימן מתאים?<div class="big-eq">${frac(a,b)} <span class="slot">?</span> ${frac(c,e)}</div>`,say:'איזה שבר גדול יותר?',visual:'',answer:ans,choices:['>','<','='],render:v=>`<span dir="ltr">${v}</span>`,hint:'מביאים למכנה משותף, ואז משווים את המונים.',
+      explain:`<p>מכנה משותף ${cd}: ${eq(`${a}/${b} = ${L}/${cd}`)}, ${eq(`${c}/${e} = ${Rr}/${cd}`)}</p><p>${eq(`${L} ${ans} ${Rr}`)}, ולכן <span dir="ltr">${a}/${b} ${ans} ${c}/${e}</span>.</p><div class="pies">${fracFig(a,b,200)}${fracFig(c,e,200)}</div>`,review:`${a}/${b} ${ans} ${c}/${e}`}}
+  const dd=pick([2,3,4,5,6]),w=R(1,4),n=R(1,dd-1),imp=w*dd+n;
+  if(t==='toImp')return{prompt:`השלימו: <span class="eq" dir="ltr">${mixS(`${w} ${n}/${dd}`)} = ${frac('?',dd)}</span>`,say:'הפכו מספר מעורב לשבר',visual:'',answer:imp,choices:choicesFrom(imp,[w+n,w*n+dd,imp+dd,imp-1],1),hint:`כל שלם הוא ${dd}/${dd}. כמה חלקים יש בסך הכל?`,explain:`<p>${w} שלמים הם ${eq(`${w} × ${dd} = ${w*dd}`)} חלקים, ועוד ${n}: ${eq(`${w*dd} + ${n} = ${imp}`)}</p>${vis(fracBar(imp,dd,{w:220}))}`};
+  const ans=`${w} ${n}/${dd}`;return{prompt:`כתבו כמספר מעורב: <span class="eq" dir="ltr">${frac(imp,dd)} = ?</span>`,say:'כתבו כמספר מעורב',visual:'',answer:ans,choices:choicesStr(ans,shuffle([`${w+1} ${n}/${dd}`,`${w} ${dd-n}/${dd}`,`${n} ${w}/${dd}`,`${w-1||w+2} ${n}/${dd}`])),render:mixS,hint:`כמה פעמים ${dd} נכנס ב-${imp}?`,explain:`<p>${eq(`${imp} ÷ ${dd} = ${w}`)} שארית ${n}: ${w} שלמים ועוד ${n}/${dd}.</p>${vis(fracBar(imp,dd,{w:220}))}`}}
+
+function genAreaAng(i){const d=D(i);const t=['area','area','ang','area','ang','miss','ang','sq'][i]||pick(['area','ang','miss']);
+  if(t==='area'){const w=R(3,d?12:8),h=R(2,d?9:6),A=w*h,P=2*(w+h);return{prompt:`מה השטח של מלבן שצלעותיו ${w} ס״מ ו-${h} ס״מ?`,visual:w<=10&&h<=8?rectSVG(w,h,{grid:true}):rectSVG(w,h),answer:A,choices:choicesFrom(A,[P,w+h,A+w,A-h],1),render:v=>`${v}<small>סמ״ר</small>`,hint:'שטח = אורך × רוחב (כמה משבצות מכסות את המלבן).',
+    explain:`<p>${eq(`${w} × ${h} = ${A}`)} – ${A} סנטימטרים רבועים (סמ״ר).</p><p class="alt">אל תתבלבלו עם היקף: ההיקף הוא ${eq(`${w} + ${h} + ${w} + ${h} = ${P}`)} ס״מ – זו הדרך מסביב, לא השטח שבפנים.</p>`}}
+  if(t==='ang'){const deg=pick(d===0?[90,40,130]:[35,60,90,110,150,180,75]);const ans=deg<90?'חדה':deg===90?'ישרה':deg<180?'קהה':'שטוחה';
+    return{prompt:'איזו זווית זו?',visual:deg===180?`<svg viewBox="0 0 280 80" width="240" style="max-width:100%;height:auto"><line x1="20" y1="50" x2="260" y2="50" style="stroke:var(--ink);stroke-width:4;stroke-linecap:round"/><circle cx="140" cy="50" r="4" style="fill:var(--ink)"/><path d="M106 50 A34 34 0 0 1 174 50" style="fill:none;stroke:var(--accent);stroke-width:3"/></svg>`:angleSVG(deg),answer:ans,choices:['חדה','ישרה','קהה','שטוחה'],small:true,hint:'השוו לפינה של דף: אם קטנה ממנה – חדה; בדיוק כמוה – ישרה; גדולה ממנה – קהה.',
+      explain:`<div class="kw"><div><b>חדה</b><span>פחות מ-90°</span></div><div><b>ישרה</b><span>בדיוק 90° – כמו פינת דף</span></div><div><b>קהה</b><span>בין 90° ל-180°</span></div><div><b>שטוחה</b><span>180° – קו ישר</span></div></div><p>כאן הזווית ${deg}°, ולכן היא <b>${ans}</b>.</p>`,review:`${deg}° – ${ans}`}}
+  if(t==='miss'){const w=R(3,9),h=R(3,9),A=w*h;return{prompt:`שטח מלבן הוא ${A} סמ״ר. צלע אחת שלו ${w} ס״מ. מה אורך הצלע השנייה?`,visual:'',answer:h,choices:choicesFrom(h,[A-w,A/2,h+1,w],1),render:UNIT,hint:'שטח = צלע × צלע. איזה מספר כפול '+w+' נותן '+A+'?',explain:`<p>${eq(`${w} × ? = ${A}`)} ← ${eq(`${A} ÷ ${w} = ${h}`)}</p>`}}
+  const a=R(3,9),P=4*a,A=a*a;return{prompt:`היקף של ריבוע הוא ${P} ס״מ. מה השטח שלו?`,visual:'',answer:A,choices:choicesFrom(A,[P,a,a*2,A+a],1),render:v=>`${v}<small>סמ״ר</small>`,hint:'קודם מוצאים את הצלע (היקף ÷ 4), ואז שטח = צלע × צלע.',explain:`${steps([`${P} ÷ 4 = ${a}`,`${a} × ${a} = ${A}`])}${vis(rectSVG(a,a,{grid:true}))}`}}
+
+/* ---------- ה ---------- */
+const decS=v=>`<span dir="ltr">${v}</span>`;
+function genDec(i){const d=D(i);const t=['write','grid','cmp','cmp','add','sub','add','sub'][i]||pick(['cmp','add','sub']);
+  if(t==='write'){const h=Math.random()<.5;const n=h?R(1,99):R(1,9),dd=h?100:10;const ans=r3(n/dd);return{prompt:`איך כותבים <span class="eq" dir="ltr">${frac(n,dd)}</span> כשבר עשרוני?`,say:'איך כותבים כשבר עשרוני',visual:'',answer:ans,choices:nums(ans,[n/10,n/1000,n,r3(n/dd)+0.1]),render:decS,hint:`${h?'מאיות – שתי ספרות אחרי הנקודה':'עשיריות – ספרה אחת אחרי הנקודה'}.`,explain:`<p>${frac(n,dd)} = ${n} ${h?'מאיות':'עשיריות'}, ולכן <b dir="ltr">${ans}</b>. ${h&&n<10?'שימו לב ל-0 אחרי הנקודה!':''}</p>`}}
+  if(t==='grid'){const k=R(5,95);const ans=r3(k/100);return{prompt:'איזה חלק מהריבוע צבוע? כתבו כשבר עשרוני.',visual:hundredGrid(k,170),answer:ans,choices:nums(ans,[k/10,r3((100-k)/100),k,r3(ans+0.1)]),render:decS,hint:'הריבוע מחולק ל-100. כל משבצת היא מאית (0.01). כל שורה היא עשירית (0.1).',explain:`<p>צבועות ${k} משבצות מתוך 100: ${Math.floor(k/10)} שורות מלאות (${Math.floor(k/10)/10}) ועוד ${k%10} משבצות.</p><p>${frac(k,100)} = <b dir="ltr">${ans}</b></p>`}}
+  if(t==='cmp'){let a,b;if(d===1){a=r3(R(1,9)/10);b=r3(R(11,99)/100);}else{a=r3(R(11,99)/100);b=r3(R(101,999)/1000)}if(Math.random()<.5)[a,b]=[b,a];if(a===b)b=r3(b+0.01);const ans=a>b?'>':'<';
+    return{prompt:`איזה סימן מתאים?<div class="big-eq">${a} <span class="slot">?</span> ${b}</div>`,visual:'',answer:ans,choices:['>','<','='],render:v=>`<span dir="ltr">${v}</span>`,hint:'משלימים אפסים כך שלשני המספרים יהיו אותן ספרות אחרי הנקודה, ואז משווים.',
+      explain:`<p>מוסיפים אפסים: ${eq(`${a.toFixed(3)} ${ans} ${b.toFixed(3)}`)}</p><p class="alt">יותר ספרות אחרי הנקודה לא אומר מספר גדול יותר! 0.5 = 0.50, וזה גדול מ-0.45.</p>`,review:`${a} ${ans} ${b}`}}
+  const dp=d===1?1:2;let a=r3(R(11,d===1?99:999)/(10**dp)),b=r3(R(11,d===1?99:499)/(10**pick([1,dp])));const sub=t==='sub';if(sub&&b>a)[a,b]=[b,a];const ans=r3(sub?a-b:a+b);const op=sub?'−':'+';
+  return{prompt:qEq(`${a} ${op} ${b} = ?`),visual:'',answer:ans,choices:nums(ans,[r3(ans+0.1),r3(ans-0.1),r3(ans*10),r3(ans+1)],0),render:decS,hint:'מיישרים את הנקודות אחת מתחת לשנייה, ומשלימים אפסים.',
+    explain:`<div class="pvwrap"><table class="pv"><tbody><tr><td class="op"></td><td>${a.toFixed(2)}</td></tr><tr><td class="op">${op}</td><td>${b.toFixed(2)}</td></tr></tbody></table></div><p>הנקודה מתחת לנקודה, מאיות מתחת למאיות: ${eq(`${a.toFixed(2)} ${op} ${b.toFixed(2)} = ${ans.toFixed(2)}`)}</p>`}}
+
+function genFracAdd(i){const d=D(i);let a,b,c,e;const sub=i%2===1;
+  if(d===0){b=e=pick([4,5,6,7,8,9]);a=R(1,b-2);c=R(1,b-a-1);if(sub&&a<c)[a,c]=[c,a]}
+  else if(d===1){b=pick([2,3,4,5]);e=b*pick([2,3]);do a=R(1,b-1);while(gcd(a,b)>1);do c=R(1,e-1);while(gcd(c,e)>1)}
+  else{do{b=pick([2,3,4,5]);e=pick([3,4,5,6])}while(b===e||e%b===0||b%e===0);do a=R(1,b-1);while(gcd(a,b)>1);do c=R(1,e-1);while(gcd(c,e)>1)}
+  const cd=b*e/gcd(b,e),A=a*cd/b,C=c*cd/e;let n=sub?A-C:A+C;if(sub&&n<0){[a,b,c,e]=[c,e,a,b];return genFracAdd(i)}const ans=toMix(n,cd);const op=sub?'−':'+';const wrong=toMix(sub?Math.abs(a-c)||1:a+c,sub?Math.abs(b-e)||b:b+e);
+  return{prompt:`<span class="eq" dir="ltr" style="font-size:40px">${frac(a,b)} ${op} ${frac(c,e)} = <span class="slot">?</span></span>`,say:'חברו את השברים',visual:'',answer:ans,choices:choicesStr(ans,shuffle([wrong,toMix(n+1,cd),toMix(Math.max(1,n-1),cd),toMix(sub?A+C:Math.abs(A-C)||1,cd)]).filter(x=>x!==ans&&x!=='0')),render:mixS,hint:b===e?'אותו מכנה: מחברים רק את המונים.':'קודם מביאים למכנה משותף.',
+    explain:`${b!==e?`<p>מכנה משותף ${cd}: ${eq(`${a}/${b} = ${A}/${cd}`)}, ${eq(`${c}/${e} = ${C}/${cd}`)}</p>`:''}<p>${eq(`${A}/${cd} ${op} ${C}/${cd} = ${n}/${cd}`)}${ans!==`${n}/${cd}`?` = <b>${mixS(ans)}</b>`:''}</p><p class="alt">טעות נפוצה: לחבר גם את המכנים (${mixS(wrong)}). המכנה אומר את גודל החלקים – הוא לא משתנה בחיבור!</p>`,review:`${a}/${b} ${op} ${c}/${e} = ${ans}`}}
+
+function genFracOf(i){const d=D(i);const dd=pick([2,3,4,5,6,8]),n=d===0?1:R(1,dd-1),k=R(2,d===2?9:12),W=dd*k,part=n*k;
+  if(d<2)return{prompt:`כמה זה <span class="eq" dir="ltr">${frac(n,dd)}</span> מ-${W}?`,say:`כמה זה ${n} חלקי ${dd} מ-${W}`,visual:'',answer:part,choices:choicesFrom(part,[k,W/n|0,part+k,W-part],1),hint:`קודם מחלקים ל-${dd} חלקים, ואז לוקחים ${n} מהם.`,explain:`${steps([`${W} ÷ ${dd} = ${k}`,`${k} × ${n} = ${part}`])}${vis(fracBar(n,dd,{w:260}))}<p>כל חלק שווה ${k}, ו-${n} חלקים הם ${part}.</p>`};
+  return{prompt:`<span class="wptxt"><span class="eq" dir="ltr">${frac(n,dd)}</span> מהתלמידים בשכבה הלכו לחוג. אלה ${part} תלמידים. כמה תלמידים יש בכל השכבה?</span>`,say:`${n} חלקי ${dd} מהתלמידים הם ${part}. כמה בסך הכל?`,visual:'',answer:W,choices:choicesFrom(W,[part*n,part+dd,k,W+k],1),hint:`אם ${n} חלקים הם ${part}, כמה שווה חלק אחד?`,explain:`${steps([`${part} ÷ ${n} = ${k}`,`${k} × ${dd} = ${W}`])}${vis(fracBar(n,dd,{w:260}))}<p>חלק אחד = ${k}, וכל ${dd} החלקים = ${W}.</p>`}}
+
+function genDivis(i){const d=D(i);const RULES={2:'ספרת האחדות זוגית',3:'סכום הספרות מתחלק ב-3',5:'ספרת האחדות 0 או 5',9:'סכום הספרות מתחלק ב-9',10:'ספרת האחדות 0',4:'שתי הספרות האחרונות מתחלקות ב-4'};
+  const dsum=n=>String(n).split('').reduce((a,b)=>a+ +b,0);
+  if(d===0){const k=pick([2,5,10,3]);const yes=Math.random()<.5;let n;do n=R(100,999);while((n%k===0)!==yes);const ans=yes?'כן':'לא';return{prompt:`האם ${n} מתחלק ב-${k} בלי שארית?`,visual:'',answer:ans,choices:['כן','לא'],small:true,hint:`הכלל של ${k}: ${RULES[k]}.`,explain:`<p>הכלל של ${k}: ${RULES[k]}.</p><p>${k===3?`סכום הספרות: ${eq(`${String(n).split('').join(' + ')} = ${dsum(n)}`)}. `:''}לכן ${n} <b>${yes?'מתחלק':'לא מתחלק'}</b> ב-${k}.</p>`,review:`${n} ${yes?'מתחלק':'לא מתחלק'} ב-${k}`}}
+  if(d===1){const k=pick([3,9,4]);let ns;do ns=[...new Set([...Array(10)].map(()=>R(100,999)))].slice(0,8);while(ns.length<8||ns.filter(n=>n%k===0).length<2||ns.filter(n=>n%k===0).length>5);const cs=ns.filter(n=>n%k===0);
+    return{multi:true,prompt:`הקיפו את המספרים שמתחלקים ב-${k}:`,visual:'',choices:ns,correctSet:cs,answer:cs.join(','),hint:`הכלל של ${k}: ${RULES[k]}.`,explain:`<p>הכלל של ${k}: ${RULES[k]}.</p><div class="kw">${ns.map(n=>`<div><b>${n}</b><span>${k===4?`${n%100} ${n%100%4?'לא ':''}מתחלק ב-4`:`סכום ספרות ${dsum(n)}`} ← ${n%k?'לא':'כן'}</span></div>`).join('')}</div>`,review:`מתחלקים ב-${k}: ${cs.join(', ')}`}}
+  const k=pick([3,9]);const a=R(1,9),c=R(0,9);const need=(k-((a+c)%k))%k;const opts=[...Array(10)].map((_,x)=>x).filter(x=>(a+x+c)%k===0);const ans=opts[0];
+  return{prompt:`איזו ספרה חסרה כדי שהמספר <b dir="ltr">${a}_${c}</b> יתחלק ב-${k}?${opts.length>1?' (הקטנה ביותר)':''}`,visual:'',answer:ans,choices:choicesFrom(ans,[ans+1,ans+2,need+1,ans+3].filter(x=>x<=9&&!opts.includes(x)),0),hint:`${RULES[k]}. כמה חסר לסכום ${a} + ${c}?`,explain:`<p>${a} + ${c} = ${a+c}. צריך סכום שמתחלק ב-${k}: ${eq(`${a+c} + ${ans} = ${a+c+ans}`)}</p><p>המספר: <b dir="ltr">${a}${ans}${c}</b></p>`}}
+
+function genLongDiv(i){const d=D(i);const b=R(2,9);let q;if(d===0)q=R(12,49);else if(d===1)q=R(112,299);else q=i===7?100*R(1,9)+R(1,9):R(1001,1999);if(d===0&&b*q>99)q=Math.floor(99/b);const n=b*q;
+  return{prompt:qEq(`${fmtK(n)} ÷ ${b} = ?`).replace(',',''),visual:'',answer:q,choices:choicesFrom(q,[Number(String(q).replace(/0/g,''))||q+1,q+10,q-1,q+100],1),hint:'מתחילים מהספרה השמאלית: כמה פעמים '+b+' נכנס? מורידים את הספרה הבאה וממשיכים.',
+    explain:`${longDiv(n,b)}<p>התשובה: <b>${q}</b>. בודקים: ${eq(`${q} × ${b} = ${n}`)}</p>${String(q).includes('0')?'<p class="alt">כשהמספר קטן מהמחלק – כותבים 0 במנה. בלי ה-0 התשובה יוצאת קטנה פי 10!</p>':''}`}}
+
+function genTri(i){const d=D(i);const t=['tri','tri','right','line','tri','area','par','area'][i]||pick(['tri','right','area']);
+  if(t==='tri'){let A,B;do{A=5*R(6,16);B=5*R(6,16)}while(A+B>165);const C=180-A-B;return{prompt:'מה גודל הזווית החסרה במשולש?',visual:triAng(`${A}°`,`${B}°`,'?'),answer:C,choices:choicesFrom(C,[180-A,A+B,360-A-B,C+10],1),render:v=>`${v}°`,hint:'סכום הזוויות במשולש הוא תמיד 180°.',explain:steps([`${A} + ${B} = ${A+B}`,`180 − ${A+B} = ${C}`])+'<p>בכל משולש: הזוויות ביחד = <b>180°</b>.</p>'}}
+  if(t==='right'){const A=R(15,75);const C=90-A;return{prompt:'במשולש ישר-זווית, מה גודל הזווית החסרה?',visual:triAng('90°',`${A}°`,'?',true),answer:C,choices:choicesFrom(C,[180-A,90+A,A,C+10],1),render:v=>`${v}°`,hint:'זווית ישרה היא 90°. מה נשאר מ-180°?',explain:steps([`90 + ${A} = ${90+A}`,`180 − ${90+A} = ${C}`])}}
+  if(t==='line'){const A=R(25,155);const C=180-A;return{prompt:`שתי זוויות יחד יוצרות קו ישר. אחת מהן ${A}°. מה גודל השנייה?`,visual:'',answer:C,choices:choicesFrom(C,[90-A>0?90-A:A+10,360-A,A,C+10],1),render:v=>`${v}°`,hint:'קו ישר הוא זווית שטוחה: 180°.',explain:`<p>${eq(`180 − ${A} = ${C}`)}</p>`}}
+  if(t==='par'){const b=R(4,12),h=R(3,9);return{prompt:`מה השטח של מקבילית שהבסיס שלה ${b} ס״מ והגובה ${h} ס״מ?`,visual:'',answer:b*h,choices:choicesFrom(b*h,[b*h/2,2*(b+h),b+h,b*h+b],1),render:v=>`${v}<small>סמ״ר</small>`,hint:'שטח מקבילית = בסיס × גובה.',explain:`<p>${eq(`${b} × ${h} = ${b*h}`)}. אפשר לחתוך משולש מצד אחד ולהעביר לצד השני – ומקבלים מלבן!</p>`}}
+  const b=2*R(2,8),h=R(3,10),A=b*h/2;return{prompt:`מה השטח של המשולש?`,visual:triArea(b,h),answer:A,choices:choicesFrom(A,[b*h,b+h,A+h,2*A+1],1),render:v=>`${v}<small>סמ״ר</small>`,hint:'שטח משולש = בסיס × גובה ÷ 2.',explain:`${steps([`${b} × ${h} = ${b*h}`,`${b*h} ÷ 2 = ${A}`])}<p class="alt">למה לחלק ב-2? משולש הוא בדיוק חצי ממלבן עם אותו בסיס וגובה.</p>`}}
+
+/* ---------- ו ---------- */
+function genPct(i){const d=D(i);const t=['of','of','grid','of','what','what','disc','disc'][i]||pick(['of','what','disc']);
+  if(t==='of'){const p=d===0?pick([10,25,50]):pick([20,30,40,60,75,15]);let w;do w=pick([20,40,60,80,120,200,240,300,400,500]);while((w*p)%100);const ans=w*p/100;return{prompt:`כמה זה ${p}% מ-${w}?`,visual:p<=50?hundredGrid(p,130):'',answer:ans,choices:choicesFrom(ans,[w/10*(p/10),w-ans,p,ans+10,w*p/10].filter(v=>Number.isInteger(v)),0),hint:p%10===0?'10% זה לחלק ב-10. ואז כופלים.':'25% זה רבע, 50% זה חצי.',
+    explain:`${p===50?`<p>50% = חצי: ${eq(`${w} ÷ 2 = ${ans}`)}</p>`:p===25||p===75?`<p>25% = רבע: ${eq(`${w} ÷ 4 = ${w/4}`)}${p===75?`, ו-75% = שלושה רבעים: ${eq(`${w/4} × 3 = ${ans}`)}`:''}</p>`:`<p>10% = מחלקים ב-10, ואז כופלים ב-${p/10}:</p>`+steps([`${w} ÷ 10 = ${w/10}`,`${w/10} × ${p/10} = ${ans}`])}<p class="alt">אחוז = חלק מ-100. ${p}% זה ${frac(p,100)}.</p>`,review:`${p}% מ-${w} = ${ans}`}}
+  if(t==='grid'){const k=5*R(1,19);return{prompt:'כמה אחוזים מהריבוע צבועים?',visual:hundredGrid(k,170),answer:k,choices:choicesFrom(k,[100-k,k/10*10+10,k/5,k+5],1),render:v=>`${v}%`,hint:'יש 100 משבצות. כל משבצת היא 1%.',explain:`<p>${k} משבצות מתוך 100 = <b>${k}%</b>.</p>`}}
+  if(t==='what'){const w=pick([20,40,50,80,200,25]);const p=pick([10,20,25,40,50,75]);if((w*p)%100)return genPct(i);const part=w*p/100;return{prompt:`כמה אחוזים הם ${part} מתוך ${w}?`,visual:'',answer:p,choices:choicesFrom(p,[part,100-p,p+5,Math.round(w/part)],1),render:v=>`${v}%`,hint:'כותבים כשבר, ומרחיבים או מצמצמים למכנה 100.',explain:`<p>${frac(part,w)} = ${frac(p,100)} = <b>${p}%</b></p>`}}
+  const price=pick([80,120,150,200,240,360,400]),p=pick([10,20,25,50,15]);if((price*p)%100)return genPct(i);const off=price*p/100,ans=price-off;return{prompt:`<span class="wptxt">מחיר של אופניים הוא ${price} ₪. בחנות יש הנחה של ${p}%. כמה ישלמו?</span>`,visual:'',answer:ans,choices:choicesFrom(ans,[off,price-p,price+off,ans-10],1),render:v=>`${v} ₪`,hint:'קודם מחשבים כמה שווה ההנחה, ואז מורידים מהמחיר.',explain:steps([`${price} × ${p}% = ${off}`,`${price} − ${off} = ${ans}`])+`<p class="alt">טעות נפוצה: לענות ${off} – זו ההנחה, לא המחיר לתשלום.</p>`}}
+
+const ratS=s=>`<span dir="ltr">${s}</span>`;
+function genRatio(i){const d=D(i);const t=['simp','simp','share','share','recipe','scale','recipe','scale'][i]||pick(['simp','share','scale']);
+  if(t==='simp'){const a=R(1,5),b=R(a+1,8),m=R(2,6);if(gcd(a,b)>1)return genRatio(i);const ans=`${a} : ${b}`;return{prompt:`צמצמו את היחס <b dir="ltr">${a*m} : ${b*m}</b>`,visual:'',answer:ans,choices:choicesStr(ans,shuffle([`${b} : ${a}`,`${a*m/ (m>2?2:1)} : ${b*m/(m>2?2:1)}`,`${a+1} : ${b+1}`,`${a} : ${b+1}`]).filter(x=>x!==ans)),render:ratS,small:true,hint:'מחלקים את שני המספרים באותו מספר.',explain:`<p>מחלקים את שני הצדדים ב-${m}: ${eq(`${a*m} ÷ ${m} = ${a}`)}, ${eq(`${b*m} ÷ ${m} = ${b}`)}</p><p>היחס: <b dir="ltr">${ans}</b></p>`}}
+  if(t==='share'){const a=R(1,4);let b;do b=R(1,5);while(b===a);const k=R(2,9),T=(a+b)*k;return{prompt:`<span class="wptxt">${T} סוכריות מחולקות בין נועה ליואב ביחס <span dir="ltr">${a} : ${b}</span>. כמה סוכריות קיבלה נועה?</span>`,visual:'',answer:a*k,choices:choicesFrom(a*k,[b*k,T/2|0,a*k+k,T-a],1),hint:`יש ${a}+${b} חלקים שווים. כמה שווה חלק אחד?`,explain:`<p>יש ${a+b} חלקים שווים, וכל חלק שווה ${k}:</p>`+steps([`${a} + ${b} = ${a+b}`,`${T} ÷ ${a+b} = ${k}`,`${a} × ${k} = ${a*k}`])}}
+  if(t==='recipe'){const p=pick([2,3,4]),e=R(2,6),m=pick([2,3,5]);const P2=p*m;return{prompt:`<span class="wptxt">במתכון ל-${p} עוגות צריך ${e} ביצים. כמה ביצים צריך ל-${P2} עוגות?</span>`,visual:'',answer:e*m,choices:choicesFrom(e*m,[e+P2-p,e*P2,e*m+e,P2],1),hint:`כמה פעמים יותר עוגות? ${P2} ÷ ${p}.`,explain:`<p>${P2} עוגות זה פי ${m} מ-${p}, אז גם הביצים פי ${m}: ${eq(`${e} × ${m} = ${e*m}`)}</p>`}}
+  const sc=pick([100,1000,10000]),cm=R(2,9);const realCm=cm*sc,ans=realCm/100;return{prompt:`<span class="wptxt">במפה בקנה מידה <span dir="ltr">1 : ${fmtK(sc)}</span>, המרחק בין שני בתים הוא ${cm} ס״מ. מה המרחק האמיתי במטרים?</span>`,visual:'',answer:ans,choices:nums(ans,[realCm,ans*10,ans/10,cm*100]),render:v=>`${fmtK(v)}<small>מ׳</small>`,hint:`1 ס״מ במפה = ${fmtK(sc)} ס״מ במציאות. ובמטר יש 100 ס״מ.`,explain:`<p>קודם בסנטימטרים, ואז ממירים למטרים (100 ס״מ = מטר):</p>`+steps([`${cm} × ${sc} = ${realCm}`,`${realCm} ÷ 100 = ${ans}`])+`<p>המרחק: <b>${fmtK(ans)} מטר</b>.</p>`}}
+
+function genDecMul(i){const d=D(i);const t=['shift','shift','mul','mul','mul','div','div','div'][i]||pick(['mul','div']);
+  if(t==='shift'){const x=r3(R(101,9999)/100),m=pick([10,100,1000]),dv=Math.random()<.35;const ans=r3(dv?x/m:x*m);return{prompt:qEq(`${x} ${dv?'÷':'×'} ${fmtK(m)} = ?`),visual:'',answer:ans,choices:nums(ans,[r3(dv?x/(m/10):x*m*10),r3(dv?x*m:x/m),r3(dv?x/m/10:x*m/10)]),render:decS,hint:`${dv?'חילוק':'כפל'} ב-${m}: מזיזים את הנקודה ${String(m).length-1} מקומות ${dv?'שמאלה':'ימינה'}.`,explain:`<p>${dv?'מחלקים':'כופלים'} ב-${m} ← הנקודה זזה ${String(m).length-1} ${String(m).length-1===1?'מקום':'מקומות'} ${dv?'שמאלה':'ימינה'}: ${eq(`${x} ${dv?'÷':'×'} ${m} = ${ans}`)}</p>`}}
+  if(t==='mul'){let a,b;if(d===0){a=r3(R(1,9)/10);b=R(2,9)}else if(d===1){a=r3(R(11,99)/10);b=R(2,9)}else{a=r3(R(11,49)/10);b=r3(R(11,29)/10)}const A=Math.round(a*100),B=Math.round(b*100);const ans=r3(a*b);const places=(String(a).split('.')[1]||'').length+(String(b).split('.')[1]||'').length;const ia=Number(String(a).replace('.','')),ib=Number(String(b).replace('.',''));
+    return{prompt:qEq(`${a} × ${b} = ?`),visual:'',answer:ans,choices:nums(ans,[r3(ans*10),r3(ans/10),r3(ans+0.1),r3(a+b)]),render:decS,hint:'כופלים בלי נקודות, ואז סופרים כמה ספרות היו אחרי הנקודה.',explain:steps([`${ia} × ${ib} = ${ia*ib}`])+`<p>אחרי הנקודה היו ${places} ${places===1?'ספרה':'ספרות'} בסך הכל ← מזיזים את הנקודה ${places}: <b dir="ltr">${ans}</b></p><p class="alt">בדיקת היגיון: ${a} × ${b} בערך ${Math.round(a)} × ${Math.round(b)} = ${Math.round(a)*Math.round(b)}.</p>`}}
+  let q,b;if(d===1){b=R(2,9);q=r3(R(11,99)/10)}else{b=pick([0.5,0.2,0.4,0.25]);q=R(3,30)}const n=r3(q*b);const ans=q;
+  return{prompt:qEq(`${n} ÷ ${b} = ?`),visual:'',answer:ans,choices:nums(ans,[r3(ans*10),r3(ans/10),r3(n*b),r3(ans+1)]),render:decS,hint:Number.isInteger(b)?'מחלקים כרגיל ושמים את הנקודה במנה מעל הנקודה.':'מכפילים את שני המספרים ב-10 או ב-100 כך שהמחלק יהיה מספר שלם.',explain:Number.isInteger(b)?`<p>${eq(`${n} ÷ ${b} = ${ans}`)} – כמו ${eq(`${r3(n*10)} ÷ ${b} = ${r3(ans*10)}`)}, והנקודה חוזרת מקום אחד.</p>`:`<p>כופלים את שניהם ב-${b===0.25?100:10}: ${eq(`${r3(n*(b===0.25?100:10))} ÷ ${r3(b*(b===0.25?100:10))} = ${ans}`)}</p><p class="alt">חילוק במספר קטן מ-1 נותן תוצאה גדולה יותר מהמספר!</p>`}}
+
+function genFracMul(i){const d=D(i);
+  if(d===0){const w=R(2,6),b=pick([3,4,5,6,8]),a=R(1,b-1);const ans=toMix(w*a,b);return{prompt:`<span class="eq" dir="ltr" style="font-size:40px">${w} × ${frac(a,b)} = <span class="slot">?</span></span>`,say:'כפל שבר במספר',visual:'',answer:ans,choices:choicesStr(ans,shuffle([toMix(w*a,w*b),toMix(a,w*b),toMix(w+a,b),toMix(w*a+1,b)]).filter(x=>x!==ans)),render:mixS,hint:'כופלים רק את המונה במספר השלם.',explain:`<p>${eq(`${w} × ${a}/${b} = ${w*a}/${b}`)}${ans!==`${w*a}/${b}`?` = <b>${mixS(ans)}</b>`:''}</p>${vis(fracBar(w*a,b,{w:220}))}`}}
+  const a=R(1,4),b=R(a+1,6),c=R(1,4),e=R(c+1,6);
+  if(d===1){const ans=toMix(a*c,b*e);return{prompt:`<span class="eq" dir="ltr" style="font-size:40px">${frac(a,b)} × ${frac(c,e)} = <span class="slot">?</span></span>`,say:'כפל שברים',visual:'',answer:ans,choices:choicesStr(ans,shuffle([toMix(a+c,b+e),toMix(a*e,b*c),toMix(a*c,b+e),toMix(a*c+1,b*e)]).filter(x=>x!==ans&&x!=='0')),render:mixS,hint:'מונה כפול מונה, מכנה כפול מכנה – ומצמצמים.',explain:`<p>${eq(`${a} × ${c} = ${a*c}`)}, ${eq(`${b} × ${e} = ${b*e}`)} ← ${frac(a*c,b*e)}${ans!==`${a*c}/${b*e}`?` = <b>${mixS(ans)}</b>`:''}</p><p class="alt">כפל בשבר קטן מ-1 נותן תוצאה קטנה יותר – זה כמו "חלק מחלק".</p>`}}
+  const ans=toMix(a*e,b*c);return{prompt:`<span class="eq" dir="ltr" style="font-size:40px">${frac(a,b)} ÷ ${frac(c,e)} = <span class="slot">?</span></span>`,say:'חילוק שברים',visual:'',answer:ans,choices:choicesStr(ans,shuffle([toMix(a*c,b*e),toMix(b*c,a*e),toMix(a*e+1,b*c),toMix(a,b*c)]).filter(x=>x!==ans&&x!=='0')),render:mixS,hint:'מחלקים בשבר = כופלים בשבר ההפוך.',explain:`<p>הופכים את השבר השני וכופלים: ${eq(`${a}/${b} × ${e}/${c} = ${a*e}/${b*c}`)}${ans!==`${a*e}/${b*c}`?` = <b>${mixS(ans)}</b>`:''}</p><p class="alt">שאלה בשפה פשוטה: כמה פעמים ${c}/${e} נכנס ב-${a}/${b}?</p>`}}
+
+function genAvg(i){const d=D(i);
+  if(d===0){const n=R(3,4);let xs;do xs=[...Array(n)].map(()=>R(2,20));while(xs.reduce((a,b)=>a+b,0)%n);const s=xs.reduce((a,b)=>a+b,0),ans=s/n;return{prompt:`מה הממוצע של המספרים <b dir="ltr">${xs.join(', ')}</b>?`,visual:'',answer:ans,choices:choicesFrom(ans,[s,Math.max(...xs),ans+1,Math.round(s/(n+1))],0),hint:'מחברים את כולם, ומחלקים בכמה מספרים יש.',explain:steps([`${xs.join(' + ')} = ${s}`,`${s} ÷ ${n} = ${ans}`])+'<p class="alt">ממוצע = מה היה כל אחד מקבל אם היינו מחלקים הכל שווה בשווה.</p>'}}
+  if(d===1){const avg=R(70,90),xs=[R(60,100),R(60,100),R(60,100)];const last=avg*4-xs.reduce((a,b)=>a+b,0);if(last<40||last>100)return genAvg(i);return{prompt:`<span class="wptxt">הממוצע של 4 מבחנים הוא ${avg}. שלושה ציונים הם ${xs.join(', ')}. מה הציון הרביעי?</span>`,visual:'',answer:last,choices:choicesFrom(last,[avg,avg*4-xs[0],last+10,Math.round((xs[0]+xs[1]+xs[2])/3)],0),hint:'ממוצע × כמות = הסכום של כולם.',explain:`<p>הסכום של כל 4 הציונים = ממוצע × 4:</p>`+steps([`${avg} × 4 = ${avg*4}`,`${xs.join(' + ')} = ${xs.reduce((a,b)=>a+b,0)}`,`${avg*4} − ${xs.reduce((a,b)=>a+b,0)} = ${last}`])}}
+  const n=R(4,6),avg=R(8,20);return{prompt:`<span class="wptxt">הממוצע של ${n} מספרים הוא ${avg}. מה הסכום שלהם?</span>`,visual:'',answer:n*avg,choices:choicesFrom(n*avg,[avg+n,avg,n*avg+avg,avg*(n-1)],0),hint:'ממוצע = סכום ÷ כמות. אז סכום = ?',explain:`<p>${eq(`${avg} × ${n} = ${n*avg}`)}</p>`}}
+
+function genVolCirc(i){const d=D(i);const t=['vol','vol','vol','circC','diam','circC','circA','volMiss'][i]||pick(['vol','circC','circA']);
+  if(t==='vol'){const l=R(2,d?9:5),w=R(2,d?6:4),h=R(2,d?8:5),V=l*w*h;return{prompt:'מה הנפח של התיבה?',visual:boxSVG(l,w,h),answer:V,choices:choicesFrom(V,[l+w+h,l*w,2*(l*w+l*h+w*h),V+l],1),render:v=>`${v}<small>סמ״ק</small>`,hint:'נפח = אורך × רוחב × גובה.',explain:`<p>שכבה אחת, ואז כל השכבות:</p>`+steps([`${l} × ${w} = ${l*w}`,`${l*w} × ${h} = ${V}`])+`<p>${V} קוביות של סנטימטר – ${V} סמ״ק.</p>`}}
+  if(t==='volMiss'){const l=R(3,8),w=R(2,6),h=R(2,9),V=l*w*h;return{prompt:`<span class="wptxt">נפח של תיבה הוא ${V} סמ״ק. האורך ${l} ס״מ והרוחב ${w} ס״מ. מה הגובה?</span>`,visual:'',answer:h,choices:choicesFrom(h,[V-l-w,V/l|0,h+1,l*w],1),render:UNIT,hint:'נפח = אורך × רוחב × גובה. מחלקים את הנפח בשטח הבסיס.',explain:steps([`${l} × ${w} = ${l*w}`,`${V} ÷ ${l*w} = ${h}`])}}
+  if(t==='diam'){const r=R(2,15);const toD=Math.random()<.5;return{prompt:toD?`רדיוס של מעגל הוא ${r} ס״מ. מה הקוטר?`:`קוטר של מעגל הוא ${2*r} ס״מ. מה הרדיוס?`,visual:circleSVG(`r = ${toD?r:'?'}`),answer:toD?2*r:r,choices:choicesFrom(toD?2*r:r,[toD?r:2*r,toD?r+2:r*4,toD?4*r:r+1],1),render:UNIT,hint:'הקוטר עובר דרך כל המעגל – הוא פעמיים הרדיוס.',explain:`<p>קוטר = 2 × רדיוס. ${toD?eq(`2 × ${r} = ${2*r}`):eq(`${2*r} ÷ 2 = ${r}`)}</p>`}}
+  const r=R(1,10);if(t==='circC'){const C=r3(2*3.14*r);return{prompt:`מה ההיקף של מעגל שהרדיוס שלו ${r} ס״מ? (π ≈ 3.14)`,visual:circleSVG(`r = ${r}`),answer:C,choices:nums(C,[r3(3.14*r),r3(3.14*r*r),r3(C+3.14),r3(2*r+3.14)]),render:v=>`${v}<small>ס״מ</small>`,hint:'היקף מעגל = 2 × π × רדיוס.',explain:`<p>הקוטר הוא ${2*r}, וכופלים אותו ב-π:</p>`+steps([`2 × ${r} = ${2*r}`,`${2*r} × 3.14 = ${C}`])}}
+  const A=r3(3.14*r*r);return{prompt:`מה השטח של מעגל שהרדיוס שלו ${r} ס״מ? (π ≈ 3.14)`,visual:circleSVG(`r = ${r}`),answer:A,choices:nums(A,[r3(2*3.14*r),r3(3.14*r),r3(3.14*2*r*2*r),r3(A+3.14)]),render:v=>`${v}<small>סמ״ר</small>`,hint:'שטח מעגל = π × רדיוס × רדיוס.',explain:steps([`${r} × ${r} = ${r*r}`,`${r*r} × 3.14 = ${A}`])}}
+
+/* ---------- grade definitions ---------- */
+GR.push(
+ {id:'d',name:'כיתה ד׳',letter:'ד',world:'פסגת האלפים',tag:'מספרים גדולים, כפל וחילוק, סדר פעולות, שברים, שטח וזוויות',color:'var(--d)',deco:'1,000',topics:[
+  {id:'d1',title:'מספרים גדולים',desc:'ערך הספרה, השוואה ועיגול',gen:genBigNum,sym:'1K',rule:'כל צעד שמאלה – פי 10, ומקום ריק מקבל אפס!',learn:()=>[
+   {t:'ערך המקום',p:'במספר 47,326 הספרה 7 נמצאת במקום האלפים, ולכן היא שווה 7,000. כל מקום שמאלה גדול פי 10.',v:`<div class="pvwrap"><table class="pv"><thead><tr><th>עשרות<br>אלפים</th><th>אלפים</th><th>מאות</th><th>עשרות</th><th>אחדות</th></tr></thead><tbody><tr><td>4</td><td style="color:var(--accent)">7</td><td>3</td><td>2</td><td>6</td></tr></tbody></table></div>`},
+   {t:'עיגול',p:'לעגל את 3,476 למאות: מסתכלים על ספרת העשרות (7). 5 ומעלה – מעגלים למעלה, ולכן 3,500.',v:`<div class="big-eq">3,476 ≈ 3,500</div>`},
+   {t:'אפס שומר מקום',p:'4 אלפים, 3 מאות ו-5 אחדות זה 4,305 – ולא 435. במקום שאין בו כלום כותבים 0.',v:eq('4000 + 300 + 0 + 5 = 4305')}]},
+  {id:'d2',title:'כפל רב-ספרתי',desc:'מפרקים לחלקים וכופלים כל חלק',gen:genMulti,sym:'×',rule:'מפרקים לחלקים, כופלים כל אחד – ומחברים יחד!',learn:()=>[
+   {t:'מפרקים לחלקים',p:'34 × 6: מפרקים את 34 ל-30 ו-4. 30 × 6 = 180, ו-4 × 6 = 24. ביחד 204.',v:areaModel(34,6)+steps(['30 × 6 = 180','4 × 6 = 24','180 + 24 = 204'])},
+   {t:'דו-ספרתי כפול דו-ספרתי',p:'23 × 14: מפרקים את 14 ל-10 ו-4. 23 × 10 = 230, ו-23 × 4 = 92. ביחד 322.',v:areaModel(23,14)+steps(['23 × 10 = 230','23 × 4 = 92','230 + 92 = 322'])},
+   {t:'כפל ב-10 וב-100',p:'כופלים ב-10? מוסיפים אפס. ב-100? שני אפסים. 47 × 100 = 4,700.',v:eq('47 × 100 = 4700')}]},
+  {id:'d3',title:'חילוק עם שארית',desc:'כמה נכנס, מה נשאר, ומה עושים עם השארית',gen:genDivRem,sym:'÷r',rule:'השארית תמיד קטנה מהמחלק – ובבעיה חושבים מה עושים איתה!',learn:()=>[
+   {t:'מה זו שארית?',p:'23 ÷ 4: ארבע נכנס 5 פעמים (20), ונשארו 3. כותבים: 5 שארית 3.',v:groupsVis(4,5)+`<span>${eq('4 × 5 + 3 = 23')}</span>`},
+   {t:'מה עושים עם השארית?',p:'29 ילדים ו-4 ילדים בכל מכונית: 7 מכוניות מלאות ועוד 1 ילד. צריך 8 מכוניות! לפעמים מעגלים למעלה.',v:`<span>${eq('29 ÷ 4 = 7')} שארית 1 ← 8 מכוניות</span>`},
+   {t:'חילוק ארוך',p:'156 ÷ 4: מתחילים משמאל. 15 ÷ 4 = 3 ונשאר 3. מורידים את 6: 36 ÷ 4 = 9. התשובה 39.',v:longDiv(156,4)}]},
+  {id:'d4',title:'סדר פעולות חשבון',desc:'סוגריים, כפל וחילוק, ואז חיבור וחיסור',gen:genOrder,sym:'( )',rule:'סוגריים קודם, כפל וחילוק אחריהם – וחיבור וחיסור בסוף!',learn:()=>[
+   {t:'כפל לפני חיבור',p:'ב-3 + 4 × 2 קודם כופלים: 4 × 2 = 8. אחר כך מחברים: 3 + 8 = 11. ולא 14!',v:steps(['4 × 2 = 8','3 + 8 = 11'])},
+   {t:'סוגריים קודם',p:'ב-(3 + 4) × 2 הסוגריים אומרים: את זה קודם! 3 + 4 = 7, ואז 7 × 2 = 14.',v:steps(['3 + 4 = 7','7 × 2 = 14'])},
+   {t:'משמאל לימין',p:'כשיש רק חיבור וחיסור, מחשבים משמאל לימין: 20 − 5 + 3 = 15 + 3 = 18.',v:steps(['20 − 5 = 15','15 + 3 = 18'])}]},
+  {id:'d5',title:'שברים שקולים',desc:'הרחבה, צמצום, השוואה ומספר מעורב',gen:genFracEq,sym:'½=²⁄₄',rule:'מכפילים או מחלקים למעלה ולמטה באותו מספר – והשבר נשאר אותו דבר!',learn:()=>[
+   {t:'שברים שקולים',p:'חצי וגם שני רבעים מכסים בדיוק אותו חלק. 1/2 = 2/4 = 4/8. כופלים מונה ומכנה באותו מספר.',v:`<div class="pies">${fracFig(1,2,200)}${fracFig(2,4,200)}${fracFig(4,8,200)}</div>`},
+   {t:'משווים שברים',p:'2/3 או 3/4? מביאים למכנה משותף 12: 8/12 ו-9/12. עכשיו ברור ש-3/4 גדול יותר.',v:`<div class="pies">${fracFig(2,3,200)}${fracFig(3,4,200)}</div>`},
+   {t:'מספר מעורב',p:'7/3 זה שני שלמים (6/3) ועוד שליש: 2 1/3.',v:fracBar(7,3,{w:220})+`<span class="big-eq" style="font-size:30px">${frac(7,3)} = ${mixS('2 1/3')}</span>`}]},
+  {id:'d6',title:'שטח וזוויות',desc:'שטח מלבן, היקף מול שטח, וסוגי זוויות',gen:genAreaAng,sym:'90°',rule:'שטח זה מה שבפנים – אורך כפול רוחב; היקף זה הדרך מסביב!',learn:()=>[
+   {t:'שטח מלבן',p:'שטח הוא כמה משבצות מכסות את הצורה. במלבן 6 על 4 יש 6 × 4 = 24 משבצות: 24 סמ״ר.',v:rectSVG(6,4,{grid:true})},
+   {t:'סוגי זוויות',p:'זווית ישרה היא 90°, כמו פינת דף. חדה – קטנה ממנה. קהה – גדולה ממנה. שטוחה – קו ישר, 180°.',v:`<div class="pies"><figure>${angleSVG(45)}<span>חדה</span></figure><figure>${angleSVG(90)}<span>ישרה</span></figure><figure>${angleSVG(130)}<span>קהה</span></figure></div>`}]}]},
+ {id:'e',name:'כיתה ה׳',letter:'ה',world:'מעבדת השברים',tag:'שברים עשרוניים, חיבור שברים, שבר מכמות, התחלקות, חילוק ארוך ומשולשים',color:'var(--e)',deco:'0.5',topics:[
+  {id:'e1',title:'שברים עשרוניים',desc:'עשיריות, מאיות, השוואה וחיבור',gen:genDec,sym:'0.5',rule:'נקודה מתחת לנקודה – ויותר ספרות לא אומר יותר גדול!',learn:()=>[
+   {t:'עשיריות ומאיות',p:'הריבוע מחולק ל-100. צבועות 35 משבצות: 35 מאיות = 0.35. כל שורה היא עשירית (0.1).',v:hundredGrid(35,170)},
+   {t:'משווים עשרוניים',p:'מה גדול יותר, 0.5 או 0.45? משלימים אפס: 0.50 מול 0.45. ולכן 0.5 גדול יותר!',v:`<div class="pies"><figure>${hundredGrid(50,110)}<span dir="ltr">0.5</span></figure><figure>${hundredGrid(45,110)}<span dir="ltr">0.45</span></figure></div>`},
+   {t:'חיבור עשרוניים',p:'מסדרים נקודה מתחת לנקודה: 2.50 + 1.75 = 4.25.',v:eq('2.50 + 1.75 = 4.25')}]},
+  {id:'e2',title:'חיבור וחיסור שברים',desc:'מכנה משותף, ואז מחברים מונים',gen:genFracAdd,sym:'⅓+⅙',rule:'קודם מכנה משותף – ורק את המונים מחברים!',learn:()=>[
+   {t:'אותו מכנה',p:'2/7 + 3/7 = 5/7. החלקים באותו גודל, אז רק סופרים כמה יש.',v:`<div class="pies">${fracFig(2,7,200)}${fracFig(3,7,200)}${fracFig(5,7,200)}</div>`},
+   {t:'מכנה משותף',p:'1/2 + 1/3: מחלקים לשישיות. 1/2 = 3/6, 1/3 = 2/6. ביחד 5/6.',v:`<div class="pies">${fracFig(3,6,200)}${fracFig(2,6,200)}${fracFig(5,6,200)}</div>`},
+   {t:'טעות נפוצה',p:'1/2 + 1/3 זה לא 2/5! המכנה אומר את גודל החלקים, ולא מחברים אותו.',v:`<span style="text-decoration:line-through">${eq('1/2 + 1/3 = 2/5')}</span>`}]},
+  {id:'e3',title:'שבר מכמות',desc:'כמה זה ¾ מ-20, ומה השלם',gen:genFracOf,sym:'¾',rule:'מחלקים במכנה, כופלים במונה – וזה החלק מהכמות!',learn:()=>[
+   {t:'שבר מכמות',p:'3/4 מ-20: מחלקים את 20 ל-4 חלקים (5 בכל אחד), ולוקחים 3 חלקים: 15.',v:fracBar(3,4,{w:260})+steps(['20 ÷ 4 = 5','5 × 3 = 15'])},
+   {t:'מוצאים את השלם',p:'2/5 מהכיתה הם 10 ילדים. חלק אחד = 10 ÷ 2 = 5. כל 5 החלקים = 25 ילדים.',v:fracBar(2,5,{w:260})+steps(['10 ÷ 2 = 5','5 × 5 = 25'])}]},
+  {id:'e4',title:'סימני התחלקות',desc:'מתי מספר מתחלק ב-2, 3, 5, 9 ו-10',gen:genDivis,sym:'÷3',rule:'ב-3 וב-9 – בודקים את סכום הספרות; ב-2, 5 ו-10 – את האחדות!',learn:()=>[
+   {t:'לפי ספרת האחדות',p:'מתחלק ב-2 – אם האחדות זוגית. ב-5 – אם האחדות 0 או 5. ב-10 – אם האחדות 0.',v:`<div class="kw"><div><b>2</b><span>${eq('134')} ✓</span></div><div><b>5</b><span>${eq('135')} ✓</span></div><div><b>10</b><span>${eq('130')} ✓</span></div></div>`},
+   {t:'לפי סכום הספרות',p:'מתחלק ב-3 אם סכום הספרות מתחלק ב-3. 471: 4 + 7 + 1 = 12 – מתחלק! ב-9 – אותו דבר עם 9.',v:steps(['4 + 7 + 1 = 12','12 ÷ 3 = 4'])}]},
+  {id:'e5',title:'חילוק ארוך',desc:'ספרה אחרי ספרה, ואפס כשצריך',gen:genLongDiv,sym:'⟌',rule:'מחלקים, כופלים, מחסרים ומורידים – ואם לא נכנס, כותבים אפס!',learn:()=>[
+   {t:'שלב אחרי שלב',p:'456 ÷ 6: 4 קטן מ-6, אז לוקחים 45. 45 ÷ 6 = 7, נשאר 3. מורידים 6: 36 ÷ 6 = 6. התשובה 76.',v:longDiv(456,6)},
+   {t:'אפס במנה',p:'624 ÷ 3: 6 ÷ 3 = 2. 2 ÷ 3 לא נכנס – כותבים 0! 24 ÷ 3 = 8. התשובה 208, ולא 28.',v:longDiv(624,3)}]},
+  {id:'e6',title:'זוויות ומשולשים',desc:'סכום הזוויות, זווית חסרה ושטח משולש',gen:genTri,sym:'180°',rule:'במשולש – 180 מעלות, ושטח זה בסיס כפול גובה חלקי שתיים!',learn:()=>[
+   {t:'סכום הזוויות',p:'בכל משולש, שלוש הזוויות ביחד הן 180°. אם שתיים הן 60° ו-70°, השלישית היא 50°.',v:triAng('60°','70°','50°')},
+   {t:'שטח משולש',p:'משולש הוא חצי ממלבן. שטח = בסיס × גובה ÷ 2. בסיס 8 וגובה 5: 8 × 5 ÷ 2 = 20 סמ״ר.',v:triArea(8,5)}]}]},
+ {id:'f',name:'כיתה ו׳',letter:'ו',world:'תחנת החלל',tag:'אחוזים, יחס וקנה מידה, עשרוניים, כפל שברים, ממוצע, נפח ומעגל',color:'var(--f)',deco:'%',topics:[
+  {id:'f1',title:'אחוזים',desc:'אחוז מכמות, כמה אחוזים, והנחות',gen:genPct,sym:'%',rule:'אחוז זה חלק ממאה – עשרה אחוזים זה לחלק בעשר!',learn:()=>[
+   {t:'מה זה אחוז?',p:'אחוז = חלק מ-100. 25% זה 25 משבצות מתוך 100 – רבע.',v:hundredGrid(25,160)},
+   {t:'אחוז מכמות',p:'30% מ-250: 10% זה 250 ÷ 10 = 25. אז 30% = 25 × 3 = 75.',v:steps(['250 ÷ 10 = 25','25 × 3 = 75'])},
+   {t:'הנחה',p:'מחיר 200 ₪ והנחה של 15%: ההנחה היא 30 ₪, ומשלמים 170 ₪.',v:steps(['200 × 15% = 30','200 − 30 = 170'])}]},
+  {id:'f2',title:'יחס וקנה מידה',desc:'צמצום יחס, חלוקה ביחס ומפות',gen:genRatio,sym:'2:3',rule:'ביחס – כופלים או מחלקים את שני הצדדים יחד!',learn:()=>[
+   {t:'יחס',p:'בכיתה 12 בנים ו-18 בנות. היחס 12 : 18, ואחרי צמצום ב-6: 2 : 3.',v:`<div class="big-eq">12 : 18 = 2 : 3</div>`},
+   {t:'חלוקה ביחס',p:'30 סוכריות ביחס 2 : 3: יש 5 חלקים, כל חלק 6. הראשון מקבל 12, השני 18.',v:steps(['2 + 3 = 5','30 ÷ 5 = 6','2 × 6 = 12','3 × 6 = 18'])},
+   {t:'קנה מידה',p:'במפה 1 : 1,000, כל ס״מ במפה הוא 1,000 ס״מ במציאות – 10 מטרים.',v:`<span>${eq('1 cm → 1000 cm = 10 m')}</span>`}]},
+  {id:'f3',title:'כפל וחילוק עשרוניים',desc:'הזזת הנקודה, כפל וחילוק',gen:genDecMul,sym:'×0.1',rule:'כופלים בלי נקודה, וסופרים ספרות אחרי הנקודה!',learn:()=>[
+   {t:'כפל ב-10, 100, 1000',p:'3.45 × 100: הנקודה זזה 2 מקומות ימינה – 345. בחילוק היא זזה שמאלה.',v:eq('3.45 × 100 = 345')},
+   {t:'כפל עשרוניים',p:'2.5 × 1.2: כופלים 25 × 12 = 300. אחרי הנקודה היו 2 ספרות, אז 3.00 = 3.',v:steps(['25 × 12 = 300','300 ← 3.00'])},
+   {t:'חילוק בעשרוני',p:'7.5 ÷ 0.5: כופלים את שניהם ב-10 – 75 ÷ 5 = 15.',v:eq('7.5 ÷ 0.5 = 75 ÷ 5 = 15')}]},
+  {id:'f4',title:'כפל וחילוק שברים',desc:'מונה כפול מונה, וחילוק בהפוך',gen:genFracMul,sym:'⅔×¾',rule:'בכפל – מונה כפול מונה; בחילוק – הופכים וכופלים!',learn:()=>[
+   {t:'כפל שברים',p:'2/3 × 3/4: מונה כפול מונה (6), מכנה כפול מכנה (12). 6/12 = 1/2.',v:`<div class="big-eq" style="font-size:32px">${frac(2,3)} × ${frac(3,4)} = ${frac(6,12)} = ${frac(1,2)}</div>`},
+   {t:'חילוק שברים',p:'3/4 ÷ 1/2: הופכים את השני (2/1) וכופלים: 3/4 × 2 = 6/4 = 1 1/2. כמה חצאים יש בשלושה רבעים? אחד וחצי!',v:`<div class="big-eq" style="font-size:32px">${frac(3,4)} ÷ ${frac(1,2)} = ${frac(3,4)} × ${frac(2,1)} = ${mixS('1 1/2')}</div>`}]},
+  {id:'f5',title:'ממוצע',desc:'מחברים ומחלקים, ומוצאים ערך חסר',gen:genAvg,sym:'x̄',rule:'ממוצע = הסכום חלקי הכמות – וסכום = ממוצע כפול הכמות!',learn:()=>[
+   {t:'מה זה ממוצע?',p:'לשלושה ילדים יש 4, 6 ו-11 סוכריות. אם יחלקו שווה בשווה: 21 ÷ 3 = 7 לכל אחד. הממוצע 7.',v:steps(['4 + 6 + 11 = 21','21 ÷ 3 = 7'])},
+   {t:'ערך חסר',p:'ממוצע של 4 ציונים הוא 85, אז הסכום 340. אם שלושה ציונים הם 80, 90 ו-78, הרביעי הוא 340 − 248 = 92.',v:steps(['85 × 4 = 340','80 + 90 + 78 = 248','340 − 248 = 92'])}]},
+  {id:'f6',title:'נפח ומעגל',desc:'נפח תיבה, היקף ושטח מעגל',gen:genVolCirc,sym:'π',rule:'נפח – שלוש מידות כפולות; במעגל – פאי פועל!',learn:()=>[
+   {t:'נפח תיבה',p:'נפח = אורך × רוחב × גובה. תיבה 5 על 3 על 4: 5 × 3 = 15 בשכבה, כפול 4 שכבות = 60 סמ״ק.',v:boxSVG(5,3,4)},
+   {t:'רדיוס וקוטר',p:'הרדיוס הוא מהמרכז לקצה. הקוטר עובר דרך כל המעגל – פעמיים הרדיוס.',v:circleSVG('r')},
+   {t:'היקף ושטח',p:'π (פאי) הוא בערך 3.14. היקף = 2 × π × r. שטח = π × r × r. לרדיוס 5: היקף 31.4, שטח 78.5.',v:steps(['2 × 3.14 × 5 = 31.4','3.14 × 5 × 5 = 78.5'])}]}]});
+
+const SCENE2={
+ d:()=>`<svg class="scene" viewBox="0 0 600 118" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="520" cy="30" r="18" fill="#FFE27A"/><polygon points="0,118 120,30 230,118" fill="#fff" fill-opacity=".25"/><polygon points="150,118 300,10 450,118" fill="#fff" fill-opacity=".35"/><polygon points="268,34 300,10 332,34 316,30 300,40 284,30" fill="#fff"/><polygon points="380,118 500,48 600,118" fill="#fff" fill-opacity=".22"/><g transform="translate(300,6)"><line x1="0" y1="0" x2="0" y2="-2" stroke="#5A4300" stroke-width="3"/></g><text x="300" y="100" text-anchor="middle" font-family="Fredoka,Arial" font-weight="700" font-size="20" fill="#fff" direction="ltr">1,000,000</text></svg>`,
+ e:()=>`<svg class="scene" viewBox="0 0 600 118" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${[[90,'#FFC12E',.5],[200,'#FF8FA8',.75],[420,'#7FE0A0',.25],[520,'#3CC3E6',.6]].map(([x,c,f])=>`<g transform="translate(${x},40)"><rect x="-10" y="-30" width="20" height="26" fill="#fff" fill-opacity=".85"/><path d="M-10 -4 L-30 60 Q-30 70 -20 70 L20 70 Q30 70 30 60 L10 -4 Z" fill="#fff" fill-opacity=".85"/><path d="M${-10-20*f*0.9} ${70-66*f} L${10+20*f*0.9} ${70-66*f} L30 60 Q30 70 20 70 L-20 70 Q-30 70 -30 60 Z" fill="${c}"/></g>`).join('')}<text x="310" y="80" text-anchor="middle" font-family="Fredoka,Arial" font-weight="700" font-size="40" fill="#fff" direction="ltr">¾ = 0.75</text></svg>`,
+ f:()=>`<svg class="scene" viewBox="0 0 600 118" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${[[40,20],[130,50],[230,14],[330,44],[560,20],[470,64]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.2" fill="#fff"/>`).join('')}<g transform="translate(110,70)"><circle r="24" fill="#FFC12E"/><ellipse rx="40" ry="9" fill="none" stroke="#fff" stroke-width="3" transform="rotate(-18)"/></g><g transform="translate(470,74) rotate(35)"><path d="M0 -40 Q16 -20 14 10 L-14 10 Q-16 -20 0 -40Z" fill="#fff"/><circle cy="-12" r="6" fill="#3CC3E6"/><path d="M-14 4 L-24 20 L-12 14Z M14 4 L24 20 L12 14Z" fill="#E5463B"/><path d="M-8 12 L0 34 L8 12Z" fill="#FFC12E"/></g><text x="300" y="86" text-anchor="middle" font-family="Fredoka,Arial" font-weight="700" font-size="44" fill="#fff">%</text></svg>`};
+(()=>{const u=k=>`url("data:image/svg+xml,${encodeURIComponent(IC[k])}")`;const st=document.createElement('style');st.textContent=`#app.w-d{--i1:${u('fishO')};--i2:${u('fishB')}}#app.w-e{--i1:${u('apple')};--i2:${u('flower')}}#app.w-f{--i1:${u('star')};--i2:${u('planet')}}`;document.head.appendChild(st)})();
+
+/* games: question bank for ד–ו */
+function gqHigh(gr,t){
+  if(gr==='d'){if(t===0){const a=R(12,49),b=R(3,9);return{t:`${a} × ${b} = ?`,a:a*b}}if(t===1){const b=R(3,9),q=R(11,30);return{t:`${b*q} ÷ ${b} = ?`,a:q}}if(t===2){const a=100*R(10,60),b=100*R(5,30);return{t:`${a} + ${b} = ?`,a:a+b}}const a=R(2,9),b=R(2,9),c=R(1,9);return{t:`${c} + ${a} × ${b} = ?`,a:c+a*b}}
+  if(gr==='e'){if(t===0){const a=R(12,25),b=R(11,19);return{t:`${a} × ${b} = ?`,a:a*b}}if(t===1){const b=R(3,9),q=R(21,99);return{t:`${b*q} ÷ ${b} = ?`,a:q}}if(t===2){const d=pick([2,3,4,5]),n=R(1,d-1),w=d*R(3,12);return{t:`${w} ÷ ${d} × ${n} = ?`,a:w/d*n}}const a=R(2,9)*25;return{t:`${a} × 4 = ?`,a:a*4}}
+  if(t===0){const p=pick([10,20,25,50,75]),w=pick([40,80,120,200,240,400]);return{t:`${w} × ${p}% = ?`,a:w*p/100}}if(t===1){const a=R(11,20);return{t:`${a} × ${a} = ?`,a:a*a}}if(t===2){const x=R(5,30),y=R(5,30);const z=3*R(4,20)-x-y;if(z<1)return gqHigh(gr,t);return{t:`(${x} + ${y} + ${z}) ÷ 3 = ?`,a:(x+y+z)/3}}const a=R(12,30),b=R(3,9),c=R(10,Math.min(50,a*b-1));return{t:`${a} × ${b} − ${c} = ?`,a:a*b-c}}
+
+/* ================= TEST BUILDER ================= */
+ACH.push({id:'test1',sym:'✍',t:'מבחן ראשון',d:'סיימת מבחן מסכם'},{id:'test90',sym:'90+',t:'ציון מצוין',d:'90 ומעלה במבחן מסכם'},{id:'test100',sym:'100!',t:'מאה עגול!',d:'100 במבחן של 15 שאלות או יותר'});
+const fmtClock=end=>{const s=Math.max(0,Math.ceil((end-Date.now())/1000));return `${Math.floor(s/60)}:${pad2(s%60)}`};
+function vTestSetup(){const P=prof();if(!S.XS||!P.grades.includes(S.XS.g))S.XS={g:S.gg&&P.grades.includes(S.gg)?S.gg:P.grades[P.grades.length-1],n:10,mins:0};const X=S.XS;const g=GR.find(x=>x.id===X.g);if(!X.sel||X.selG!==X.g){X.sel=g.topics.map(t=>t.id);X.selG=X.g}
+  const hist=(cur().tests||[]).slice(-6).reverse();
+  return `<section class="hero">${mascot('happy')}<div><h1>מבחן <span>מסכם</span></h1><p>המבחן נבנה מחדש בכל פעם, משאלות על הנושאים שבוחרים. עונים על הכל, ורק בסוף רואים ציון, תשובות נכונות והסברים.</p></div></section>
+  <section class="pcard">${P.grades.length>1?`<div class="field"><label>כיתה</label><div class="gtoggle">${P.grades.map(id=>`<button class="${X.g===id?'on':''}" data-act="xg" data-id="${id}">${GR.find(z=>z.id===id).name}</button>`).join('')}</div></div>`:''}
+   <div class="field"><label>נושאים <button class="linkbtn" data-act="xall">${X.sel.length===g.topics.length?'ניקוי הכל':'בחירת הכל'}</button></label><div class="gtoggle">${g.topics.map(t=>`<button class="${X.sel.includes(t.id)?'on':''}" data-act="xt" data-id="${t.id}">${t.title}</button>`).join('')}</div></div>
+   <div class="field"><label>כמה שאלות?</label><div class="gtoggle">${[10,15,20].map(n=>`<button class="${X.n===n?'on':''}" data-act="xn" data-id="${n}">${n}</button>`).join('')}</div></div>
+   <div class="field"><label>זמן</label><div class="gtoggle">${[[0,'בלי הגבלה'],[15,'15 דקות'],[30,'30 דקות'],[45,'45 דקות']].map(([v,l])=>`<button class="${X.mins===v?'on':''}" data-act="xm" data-id="${v}">${l}</button>`).join('')}</div></div>
+   <p class="gmsg no" aria-live="polite">${X.err||''}</p><div class="row" style="justify-content:center"><button class="btn" data-act="xstart">יוצאים למבחן!</button></div></section>
+  ${hist.length?`<section class="pcard"><h2>המבחנים האחרונים</h2><ul class="thist">${hist.map(h=>`<li><b class="tscore ${h.s>=85?'hi':h.s>=60?'mid':'lo'}">${h.s}</b><span>${GR.find(z=>z.id===h.g).name} · ${h.n} שאלות</span><small>${h.d.split('-').reverse().join('.')}</small></li>`).join('')}</ul></section>`:''}`}
+function xStart(){const X=S.XS;if(!X.sel.length){X.err='בחרו לפחות נושא אחד.';render();return}X.err='';const g=GR.find(z=>z.id===X.g);const tops=g.topics.filter(t=>X.sel.includes(t.id));const order=[];for(let k=0;k<X.n;k++)order.push(tops[k%tops.length]);
+  const qs=[],seen=new Set();order.forEach((t,k)=>{const i=Math.min(7,Math.floor(k*8/X.n));let q,tries=0;do{q=t.gen(i);tries++}while(seen.has(strip(q.prompt)+q.answer)&&tries<10);seen.add(strip(q.prompt)+q.answer);qs.push({q,tid:t.id,ans:null,msel:[]})});
+  S.TT={g:X.g,qs,i:0,end:X.mins?Date.now()+X.mins*60000:0,done:false};go('test',{grade:X.g});if(S.TT.end)timer=setInterval(()=>{const e=document.getElementById('xleft');if(e)e.textContent=fmtClock(S.TT.end);if(Date.now()>=S.TT.end&&!S.TT.done){S.TT.timeUp=true;xSubmit()}},500)}
+const xAnswered=x=>x.ans!==null||x.msel.length>0;
+function vTest(){const T=S.TT;if(T.done)return vTestResult();const it=T.qs[T.i],q=it.q,n=T.qs.length,answered=T.qs.filter(xAnswered).length;
+  const ch=q.multi?q.choices.map((v,k)=>`<button class="choice mch${it.msel.includes(k)?' msel':''}" data-act="xmt" data-k="${k}" aria-pressed="${it.msel.includes(k)}">${labelOf(q,v)}</button>`).join(''):q.choices.map((v,k)=>{const isTxt=q.small||(typeof v==='string'&&!q.render);return `<button class="choice${it.ans===k?' msel':''}${isTxt?' txt':''}${q.sent?' sentc':''}" data-act="xpick" data-k="${k}" aria-pressed="${it.ans===k}">${labelOf(q,v)}</button>`}).join('');
+  return `${T.leave?`<div class="delask" style="margin-bottom:12px"><b>לצאת מהמבחן? התשובות לא יישמרו.</b><div class="row"><button class="btn small" data-act="xquit">כן, לצאת</button><button class="btn ghost small" data-act="xstay">להמשיך במבחן</button></div></div>`:''}
+  <div class="xtop">${T.end?`<span class="xclock">⏱ <span id="xleft">${fmtClock(T.end)}</span></span>`:''}<span class="xcount">${answered}/${n} נענו</span></div>
+  <div class="xnav" dir="ltr">${T.qs.map((x,k)=>`<button class="xdot${k===T.i?' cur':''}${xAnswered(x)?' ans':''}" data-act="xgo" data-k="${k}" aria-label="שאלה ${k+1}">${k+1}</button>`).join('')}</div>
+  <div class="qcard"><div class="xnum">שאלה ${T.i+1} מתוך ${n} · ${findTopic(it.tid)[1].title}</div><div class="prompt">${q.prompt}</div>${q.visual?`<div class="vis">${q.visual}</div>`:''}${q.multi?'<p class="xhint">אפשר לסמן כמה תשובות</p>':''}</div>
+  <div class="choices${q.multi?' multi':''}${q.sent?' one':''}">${ch}</div>
+  <div class="navrow">${T.i>0?'<button class="btn ghost" data-act="xprev">הקודמת</button>':'<span></span>'}${T.i<n-1?'<button class="btn" data-act="xnext">הבאה</button>':'<button class="btn" data-act="xsubmit">סיום והגשה</button>'}</div>
+  ${T.ask?`<div class="delask" style="margin-top:12px"><b>${n-answered} ${n-answered===1?'שאלה עדיין בלי תשובה':'שאלות עדיין בלי תשובה'}. להגיש בכל זאת?</b><div class="row"><button class="btn small" data-act="xsubmitok">כן, להגיש</button><button class="btn ghost small" data-act="xback">לחזור לשאלות</button></div></div>`:''}`}
+function xSubmit(){const T=S.TT;if(T.done)return;clearInterval(timer);timer=null;let c=0;const per={};
+  T.qs.forEach(x=>{const q=x.q;let ok;if(q.multi){const ch=x.msel.map(k=>q.choices[k]);ok=ch.length===q.correctSet.length&&ch.every(v=>q.correctSet.includes(v))}else ok=x.ans!==null&&q.choices[x.ans]===q.answer;x.ok=ok;if(ok)c++;const p=per[x.tid]=per[x.tid]||{id:x.tid,title:findTopic(x.tid)[1].title,c:0,n:0};p.n++;if(ok)p.c++});
+  const n=T.qs.length,s=Math.round(c/n*100);T.res={c,n,s,topics:Object.values(per)};T.done=true;
+  const C=cur();C.tests=C.tests||[];C.tests.push({d:todayKey(),g:T.g,s,n});if(C.tests.length>40)C.tests.shift();dayRec().quiz++;save();
+  render();window.scrollTo(0,0);if(s>=60)sfx.win();if(s>=90)confetti();award('test1');if(s>=90)award('test90');if(s===100&&n>=15)award('test100');checkMission()}
+function vTestResult(){const T=S.TT,Rr=T.res;const msg=Rr.s>=90?'מצוין!':Rr.s>=75?'יפה מאוד!':Rr.s>=55?'עבודה טובה – יש עוד מה לחזק.':'כדאי לחזור על החומר ולנסות שוב.';const weak=Rr.topics.filter(t=>t.c/t.n<0.7);
+  return `<section class="result"><div class="xscore ${Rr.s>=85?'hi':Rr.s>=60?'mid':'lo'}">${Rr.s}</div><h2>${msg}</h2><p class="score">${Rr.c} תשובות נכונות מתוך ${Rr.n}${T.timeUp?' · הזמן נגמר':''}</p></section>
+  <section class="pcard"><h2>לפי נושאים</h2>${Rr.topics.map(t=>`<div class="xtopic"><span>${t.title}</span><span class="xbar"><i style="width:${t.c/t.n*100}%"></i></span><b dir="ltr">${t.c}/${t.n}</b></div>`).join('')}
+   ${weak.length?`<p>כדאי לחזור על: ${weak.map(t=>`<button class="linkbtn" data-act="learn" data-id="${t.id}">${t.title}</button>`).join(' · ')}</p>`:'<p>כל הנושאים חזקים – כל הכבוד!</p>'}</section>
+  <section class="pcard"><h2>התשובות וההסברים</h2><ol class="xrev">${T.qs.map((x,k)=>{const q=x.q;const mine=q.multi?(x.msel.length?x.msel.map(j=>labelOf(q,q.choices[j])).join(' , '):'בלי תשובה'):(x.ans===null?'בלי תשובה':labelOf(q,q.choices[x.ans]));const right=q.multi?q.correctSet.map(v=>labelOf(q,v)).join(' , '):labelOf(q,q.answer);
+    return `<li class="${x.ok?'ok':'no'}"><details${x.ok?'':' open'}><summary><span class="xmark">${x.ok?'✓':'✗'}</span> שאלה ${k+1} · ${findTopic(x.tid)[1].title}</summary><div class="prompt xrevq">${q.prompt}</div>${q.visual?`<div class="vis">${q.visual}</div>`:''}<p>התשובה שלך: <b>${mine}</b>${x.ok?'':` · התשובה הנכונה: <b>${right}</b>`}</p><div class="explain">${q.explain}</div></details></li>`}).join('')}</ol></section>
+  <div class="row" style="justify-content:center"><button class="btn ghost" data-act="home">לדף הבית</button><button class="btn" data-act="testsetup">מבחן חדש</button></div>`}
+function testAct(a,el){const id=el.dataset.id,X=S.XS,T=S.TT;
+  switch(a){
+   case 'testsetup':go('testsetup');break;
+   case 'xg':X.g=id;X.sel=null;render();break;
+   case 'xall':{const g=GR.find(z=>z.id===X.g);X.sel=X.sel.length===g.topics.length?[]:g.topics.map(t=>t.id);render();break}
+   case 'xt':{const k=X.sel.indexOf(id);if(k>=0)X.sel.splice(k,1);else X.sel.push(id);X.err='';render();break}
+   case 'xn':X.n=+id;render();break;
+   case 'xm':X.mins=+id;render();break;
+   case 'xstart':xStart();break;
+   case 'xpick':{const it=T.qs[T.i];it.ans=+el.dataset.k;sfx.tick();render();if(T.i<T.qs.length-1){const at=T.i;setTimeout(()=>{if(S.view==='test'&&S.TT===T&&T.i===at&&!T.done){T.i++;render();window.scrollTo({top:0,behavior:'smooth'})}},350)}break}
+   case 'xmt':{const it=T.qs[T.i],k=+el.dataset.k,j=it.msel.indexOf(k);if(j>=0)it.msel.splice(j,1);else it.msel.push(k);sfx.tick();render();break}
+   case 'xgo':T.i=+el.dataset.k;T.ask=false;render();break;
+   case 'xprev':T.i--;render();window.scrollTo({top:0,behavior:'smooth'});break;
+   case 'xnext':T.i++;render();window.scrollTo({top:0,behavior:'smooth'});break;
+   case 'xsubmit':if(T.qs.every(xAnswered))xSubmit();else{T.ask=true;render()}break;
+   case 'xsubmitok':xSubmit();break;
+   case 'xback':T.ask=false;T.i=T.qs.findIndex(x=>!xAnswered(x));render();break;
+   case 'xquit':go('home');break;
+   case 'xstay':T.leave=false;render();break}}
+
 /* ---------- storage ---------- */
 const KEY='math-journey-v1';
 let store={sound:true,last:null,profiles:{}};
@@ -1736,7 +2080,7 @@ const ICON={back:'<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>',home:
 const clockSVG='<svg class="clock" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="26" r="18" fill="var(--accent)"/><circle cx="24" cy="26" r="13" fill="var(--paper)"/><path d="M24 26V17M24 26l6 4" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><rect x="20" y="3" width="8" height="5" rx="2" fill="var(--accent)"/></svg>';
 
 function go(view,extra={}){clearInterval(timer);timer=null;if(S.TM&&!GVIEWS.includes(view)){S.TM=null;clearInterval(tmInt)}if(raf){cancelAnimationFrame(raf);raf=null}try{canSpeak&&speechSynthesis.cancel()}catch(e){}S={...S,...extra,view};render();window.scrollTo(0,0)}
-function topbar(g){const isHome=S.view==='home'||S.view==='who'||(S.view==='setup'&&!S.setup.edit);let title='';if(S.view==='grade')title=g.name+' · '+g.world;else if(S.view==='learn'||S.view==='quiz'||S.view==='result'){const[,t]=findTopic(S.topic);title=t.title}else if(S.view==='challenge'||S.view==='cresult')title='אתגר דקה';else if(S.view==='album')title='אלבום המדבקות';else if(S.view==='games')title='משחקי חשבון';else if(S.view==='calendar')title='לוח השנה שלי';else if(S.view==='parent')title='אזור הורים';else if(S.view==='setup')title=S.setup.edit?'ניהול שחקנים':'';else if(S.view==='surprise')title='הפתעה!';else if(S.view==='video'){const[,t]=findTopic(S.topic);title='סרטון · '+t.title}else{const G=GAMES.find(x=>x.id===S.view);if(G)title=G.title}
+function topbar(g){const isHome=S.view==='home'||S.view==='who'||(S.view==='setup'&&!S.setup.edit);let title='';if(S.view==='grade')title=g.name+' · '+g.world;else if(S.view==='learn'||S.view==='quiz'||S.view==='result'){const[,t]=findTopic(S.topic);title=t.title}else if(S.view==='challenge'||S.view==='cresult')title='אתגר דקה';else if(S.view==='album')title='אלבום המדבקות';else if(S.view==='games')title='משחקי חשבון';else if(S.view==='calendar')title='לוח השנה שלי';else if(S.view==='parent')title='אזור הורים';else if(S.view==='testsetup')title='מבחן מסכם';else if(S.view==='test')title=S.TT&&S.TT.done?'תוצאות המבחן':'מבחן';else if(S.view==='setup')title=S.setup.edit?'ניהול שחקנים':'';else if(S.view==='surprise')title='הפתעה!';else if(S.view==='video'){const[,t]=findTopic(S.topic);title='סרטון · '+t.title}else{const G=GAMES.find(x=>x.id===S.view);if(G)title=G.title}
   return `<header class="top">${isHome?'':`<button class="icon-btn" data-act="back" aria-label="חזרה">${ICON.back}</button>`}<div class="ttl">${isHome?'':title}</div>${S.view==='who'||S.view==='parent'||S.view==='setup'?'':`<button class="chip" data-act="who" title="החלפת שחקן" style="cursor:pointer">${prof().name} · החלפה</button><span class="chip" title="כוכבים שנאספו">${starSVG(true)}${totalStars()}</span>`}<button class="icon-btn" data-act="sound" aria-label="${store.sound?'השתקת צלילים':'הפעלת צלילים'}">${store.sound?ICON.on:ICON.off}</button></header>`}
 
 function vWho(){return `<section class="hero">${mascot('happy')}<div><h1>מסע <span>המספרים</span></h1><div class="bubble">שלום! אני קובי. מי משחק איתי עכשיו?</div></div></section>
@@ -1745,6 +2089,7 @@ function vWho(){return `<section class="hero">${mascot('happy')}<div><h1>מסע 
 function vHome(){const P=prof();return `<section class="hero">${mascot('happy')}<div><h1>שלום, <span>${P.name}</span>!</h1><p>${P.grades.length>1?gx('בחרי כיתה,','בחר כיתה,'):`${gx('בואי','בוא')} ניכנס ל${GR.find(g=>g.id===P.grades[0]).world},`} נלמד, נשחק במעבדות ונאסוף כוכבים ומדבקות.</p><div class="bubble">כל טעות היא עוד דרך ללמוד, אז קדימה!</div></div></section>
   ${goalWidget()}${missionWidget()}
   <div class="grades">${myGrades().map(g=>{const got=g.topics.reduce((a,t)=>a+(cur().stars[t.id]||0),0),max=g.topics.length*3;return `<button class="gcard" style="--accent:${g.color}" data-act="grade" data-id="${g.id}"><span class="gletter">${g.letter}</span><span style="min-width:0"><h2>${g.name}</h2><span class="world">${g.world}</span><br><span class="tag">${g.tag}</span><span class="meter"><i style="width:${got/max*100}%"></i></span><span class="meter-lab">${got} מתוך ${max} כוכבים</span></span></button>`}).join('')}</div>
+  <button class="gamesbtn testbtn" data-act="testsetup"><span><h3>מבחן מסכם</h3><p>מבחן מכל הנושאים, עם ציון והסברים בסוף</p></span><svg viewBox="0 0 130 80" aria-hidden="true"><rect x="34" y="6" width="56" height="70" rx="6" style="fill:var(--paper);stroke:var(--line);stroke-width:3"/><path d="M44 24h36M44 38h36M44 52h22" style="stroke:var(--line);stroke-width:4;stroke-linecap:round"/><circle cx="92" cy="58" r="17" style="fill:var(--good)"/><path d="M84 58l6 6 11-12" style="stroke:#fff;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round"/></svg></button>
   <button class="gamesbtn" data-act="games"><span><h3>משחקי חשבון</h3><p>בלונים, זיכרון, צפרדע קופצת ובונים מספרים</p></span><svg viewBox="0 0 130 80" aria-hidden="true"><path d="M40 52q-2 12 3 24" stroke="currentColor" stroke-opacity=".5" fill="none"/><ellipse cx="40" cy="30" rx="18" ry="22" fill="#E5463B"/><text x="40" y="37" text-anchor="middle" font-family="Fredoka,Arial" font-weight="700" font-size="18" fill="#fff">7</text><path d="M84 46q-2 12 3 24" stroke="currentColor" stroke-opacity=".5" fill="none"/><ellipse cx="84" cy="26" rx="16" ry="20" fill="#FFC12E"/><text x="84" y="32" text-anchor="middle" font-family="Fredoka,Arial" font-weight="700" font-size="16" fill="#3A2A00">10</text><g transform="translate(110,62) scale(1.1)">${FROG}</g></svg></button>
   ${driveRow()}
   <p class="note"><b>להורים ולמורים:</b> בכל נושא יש שיעור קצר עם המחשה, ואחריו 8 שאלות שהולכות ונעשות קשות יותר. בטעות ראשונה מקבלים רמז ועוד ניסיון, ואחרי זה פתרון מלא שלב אחר שלב. ההמחשות נעלמות בהדרגה כדי לעבור מספירה לחשבון בראש. לכל נושא יש מעבדה אינטראקטיבית וכלל זהב מתחרז לזכירה. ההתקדמות נשמרת בדפדפן הזה בלבד.</p>`}
@@ -1796,8 +2141,8 @@ function vCResult(){const g=GR.find(x=>x.id===S.grade);const C=S.C;return `<sect
 
 function vAlbum(){const c=cur();return `<section class="album-sec"><h2>מדבקות הצלחה</h2><div class="album">${ACH.map((a,k)=>{const ok=c.ach[a.id];return `<div class="stk${ok?'':' locked'}">${ok?achDisc(a,k):'<span class="disc">?</span>'}<b>${gx(a.t,a.tm||a.t)}</b><small>${a.d}</small></div>`}).join('')}</div></section><h2 style="font-size:20px;margin-bottom:12px">מדבקות כללי הזהב</h2>`+myGrades().map(g=>`<section class="album-sec" style="--accent:${g.color}"><h2>${g.name} · ${g.world}</h2><div class="album">${g.topics.map((t,k)=>sticker(t,g,k)).join('')}</div></section>`).join('')}
 function render(){const g=S.grade?GR.find(x=>x.id===S.grade):null;
-  const top=['home','album','who','calendar','parent','surprise','setup'].includes(S.view)||!g;const inGames=S.view==='games'||GVIEWS.includes(S.view);if(inGames){const gg=GR.find(x=>x.id===S.gg);app.className='w-'+S.gg;app.style.setProperty('--accent',gg.color)}else{app.className='w-'+(top?(S.user==='maor'?'c':'a'):g.id);app.style.setProperty('--accent',top?((S.view==='who'||S.view==='setup')?'var(--a)':prof().color):g.color)}
-  const views={setup:vSetup,bingo:vBingoG,ten:vTenG,flash:vFlashG,train:vTrainG,croc:vCrocG,shop:vShopG,secret:vSecretG,shapes:vShapesG,clock:vClockG,chart:vChartG,wp:vWPG,calendar:vCalendar,parent:vParent,video:vVideo,surprise:vSurprise,games:vGames,balloons:vBalloons,memory:vMemory,frog:vFrog,tsum:vTS,who:vWho,album:vAlbum,home:vHome,grade:()=>vGrade(g),learn:vLearn,quiz:vQuiz,result:vResult,challenge:vChallenge,cresult:vCResult};
+  const top=['home','album','who','calendar','parent','surprise','setup','testsetup'].includes(S.view)||!g;const inGames=S.view==='games'||GVIEWS.includes(S.view);if(inGames){const gg=GR.find(x=>x.id===S.gg);app.className='w-'+S.gg;app.style.setProperty('--accent',gg.color)}else{app.className='w-'+(top?(S.user==='maor'?'c':'a'):g.id);app.style.setProperty('--accent',top?((S.view==='who'||S.view==='setup')?'var(--a)':prof().color):g.color)}
+  const views={test:vTest,testsetup:vTestSetup,setup:vSetup,bingo:vBingoG,ten:vTenG,flash:vFlashG,train:vTrainG,croc:vCrocG,shop:vShopG,secret:vSecretG,shapes:vShapesG,clock:vClockG,chart:vChartG,wp:vWPG,calendar:vCalendar,parent:vParent,video:vVideo,surprise:vSurprise,games:vGames,balloons:vBalloons,memory:vMemory,frog:vFrog,tsum:vTS,who:vWho,album:vAlbum,home:vHome,grade:()=>vGrade(g),learn:vLearn,quiz:vQuiz,result:vResult,challenge:vChallenge,cresult:vCResult};
   const tmOn=S.TM&&GVIEWS.includes(S.view);app.innerHTML=topbar(g)+`<main>${tmOn&&!S.TM.over?tmBar():''}${tmOn&&S.TM.over?vTmOver():views[S.view]()}</main>`;if(S.view==='balloons')mountB()}
 
 /* ---------- quiz engine ---------- */
@@ -1822,7 +2167,7 @@ function cpick(k){const C=S.C;if(C.flash)return;const ok=C.q.choices[k]===C.q.an
 app.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el||el.disabled)return;const a=el.dataset.act,id=el.dataset.id;
   switch(a){
     case 'grade':go('grade',{grade:id});break;
-    case 'back':if(S.view==='setup'){go('parent',{parentOK:true});break}if(S.view==='parent'){go('who',{parentOK:false});break}if(S.view==='calendar'||S.view==='surprise'){go('home');break}if(S.view==='video'){go('grade');break}if(GVIEWS.includes(S.view)){go('games');break}if(S.view==='games'){go('home');break}if(S.view==='grade'&&prof().grades.length===1)go('home',{grade:null});else if(S.view==='grade'||S.view==='album')go('home',{grade:null});else go('grade');break;
+    case 'back':if(S.view==='test'&&S.TT&&!S.TT.done){S.TT.leave=true;render();window.scrollTo(0,0);break}if(S.view==='test'||S.view==='testsetup'){go('home');break}if(S.view==='setup'){go('parent',{parentOK:true});break}if(S.view==='parent'){go('who',{parentOK:false});break}if(S.view==='calendar'||S.view==='surprise'){go('home');break}if(S.view==='video'){go('grade');break}if(GVIEWS.includes(S.view)){go('games');break}if(S.view==='games'){go('home');break}if(S.view==='grade'&&prof().grades.length===1)go('home',{grade:null});else if(S.view==='grade'||S.view==='album')go('home',{grade:null});else go('grade');break;
     case 'who':go('who',{grade:null});break;
     case 'home':go('home',{grade:null});break;
     case 'calendar':go('calendar',{calOff:0});break;
@@ -1891,6 +2236,7 @@ app.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el|
     case 'tclear':S.T.cur.sel=[];S.T.cur.msg='';render();break;
     case 'tmore':{const c=S.T.cur;c.solved=false;c.sel=[];c.msg='איזה עוד קלפים יוצרים את המספר?';c.mcls='';render();break}
     case 'tnext':{const T=S.T;if(T.round>=6&&!S.TM){T.end=true;T.rec=setBest('tsum',T.score);render();if(T.rec){sfx.win();confetti()}gameDone();if(T.score>=8)award('tsum');}else{T.round++;T.cur=tsRound(T.round);render()}break}
+    case 'testsetup':case 'xg':case 'xall':case 'xt':case 'xn':case 'xm':case 'xstart':case 'xpick':case 'xmt':case 'xgo':case 'xprev':case 'xnext':case 'xsubmit':case 'xsubmitok':case 'xback':case 'xquit':case 'xstay':testAct(a,el);break;
     case 'pickuser':store.last=id;save();go('home',{user:id,grade:null});break;
     case 'sg':case 'sgr':case 'scol':case 'sadd':case 'sdel':case 'sdelno':case 'sdelok':case 'ssave':setupAct(a,el);break;
     case 'setupedit':S.setup=mkSetup(true);go('setup');break;
